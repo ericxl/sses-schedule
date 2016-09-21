@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>English</key>
+	<array>
+		<string>English 6</string>
+		<string>English 7</string>
+		<string>English 8</string>
+	</array>
+	<key>Languages</key>
+	<array>
+		<string>Spanish IA</string>
+		<string>Spanish IB</string>
+		<string>Spanish II</string>
+		<string>Chinese IA</string>
+		<string>Chinese IB</string>
+		<string>Chinese II</string>
+		<string>French IA</string>
+		<string>French IB</string>
+		<string>French II</string>
+		<string>Latin IA</string>
+		<string>Latin IB</string>
+		<string>Latin II</string>
+	</array>
+	<key>History</key>
+	<array>
+		<string>History 6</string>
+		<string>History 7</string>
+		<string>History 8</string>
+		<string>Theology 8</string>
+		<string>Global Connections</string>
+	</array>
+	<key>Math</key>
+	<array>
+		<string>Math I</string>
+		<string>Math I-A</string>
+		<string>Math II</string>
+		<string>Math II-A</string>
+		<string>Math III</string>
+		<string>Algebra I</string>
+		<string>Algebra I-A</string>
+		<string>Info. Literacy</string>
+	</array>
+	<key>Science</key>
+	<array>
+		<string>Science 6</string>
+		<string>Science 7</string>
+		<string>Science 8</string>
+		<string>Self Science</string>
+	</array>
+	<key>Fine Arts</key>
+	<array>
+		<string>Dance</string>
+		<string>Drama</string>
+		<string>Music</string>
+		<string>Ceramics</string>
+		<string>Performance</string>
+		<string>Visual Arts</string>
+		<string>Choir</string>
+		<string>Band 6</string>
+		<string>Jazz Band</string>
+		<string>Orchestra</string>
+	</array>
+	<key>Sports</key>
+	<array>
+		<string>Choices 6</string>
+		<string>Health Topics</string>
+		<string>Topics</string>
+		<string>PE U.S.</string>
+		<string>Tennis Field</string>
+		<string>Soccer Field</string>
+		<string>Track</string>
+		<string>Swimming</string>
+	</array>
+	<key>@(・●・)@</key>
+	<array>
+		<string>OFF</string>
+		<string>Lunch</string>
+		<string>Study Hall</string>
+	</array>
+</dict>
+</plist>

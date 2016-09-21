@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>English</key>
+	<array>
+		<string>English 9</string>
+		<string>English 10</string>
+		<string>English 11</string>
+		<string>English 12</string>
+		<string>Trans 9</string>
+		<string>Trans 10</string>
+		<string>Creative Writing</string>
+	</array>
+	<key>Languages</key>
+	<array>
+		<string>Spanish I</string>
+		<string>Spanish II</string>
+		<string>Adv. Spanish II</string>
+		<string>Spanish III</string>
+		<string>Adv. Spanish III</string>
+		<string>Spanish IV</string>
+		<string>Adv. Spanish IV</string>
+		<string>Spanish V</string>
+		<string>Adv. Spanish V</string>
+		<string>Adv. Spanish VI</string>
+		<string>Adv. Spanish VII</string>
+		<string>Chinese I</string>
+		<string>Chinese II</string>
+		<string>Chinese III/IV</string>
+		<string>Chinese Indep.</string>
+		<string>French I</string>
+		<string>French II</string>
+		<string>French III</string>
+		<string>French IV</string>
+		<string>French V-VI</string>
+		<string>French VII/VIII</string>
+		<string>Latin I</string>
+		<string>Latin II</string>
+		<string>Latin III</string>
+		<string>Latin IV-V AP</string>
+		<string>Adv. Latin V/VI</string>
+		<string>Adv. Latin VII</string>
+		<string>Japanese</string>
+	</array>
+	<key>History</key>
+	<array>
+		<string>History 9</string>
+		<string>History 10</string>
+		<string>History 11</string>
+		<string>Euro. History</string>
+		<string>Theology</string>
+		<string>Social Seminars</string>
+	</array>
+	<key>Math</key>
+	<array>
+		<string>Algebra I</string>
+		<string>Geometry</string>
+		<string>Adv. Geometry</string>
+		<string>Algebra II</string>
+		<string>Adv. Algebra II</string>
+		<string>Precalculus</string>
+		<string>Adv. Precal.</string>
+		<string>Calculus</string>
+		<string>Calculus AB</string>
+		<string>Calculus BC</string>
+		<string>Multi. Analysis</string>
+		<string>Statistics</string>
+		<string>Adv. Statistics</string>
+		<string>Computer Sci.</string>
+		<string>Indep. Math</string>
+	</array>
+	<key>Science</key>
+	<array>
+		<string>Biology I</string>
+		<string>Chemistry I</string>
+		<string>Physics I</string>
+		<string>Biology II</string>
+		<string>Chemisty II</string>
+		<string>Physics II</string>
+		<string>Robotics</string>
+		<string>Engineering</string>
+		<string>Astrophysics</string>
+		<string>Environ. Sci.</string>
+		<string>Geology</string>
+	</array>
+	<key>Fine Arts</key>
+	<array>
+		<string>Mucic Theory</string>
+		<string>Art History</string>
+		<string>History of Music</string>
+		<string>Drama. Literature</string>
+		<string>Beginning Dance</string>
+		<string>Adv. Acting</string>
+		<string>Visual Studies I</string>
+		<string>Visual Studies II</string>
+		<string>Visual Studies III</string>
+		<string>Adv. Vis. Studies</string>
+		<string>Indep. Study Art</string>
+		<string>Choreography</string>
+		<string>Acting I</string>
+		<string>Acting II</string>
+		<string>Voice&amp;Movement</string>
+		<string>Indv. Dance</string>
+		<string>Scene Study</string>
+		<string>Theatre Dance</string>
+		<string>Costume Design</string>
+		<string>Digital Imag.</string>
+		<string>Graphic Design</string>
+		<string>Studio Art</string>
+		<string>Photography I</string>
+		<string>Adv. Photo.</string>
+		<string>Ceramics</string>
+		<string>Filmmaking</string>
+		<string>Yearbook</string>
+		<string>Applied Music</string>
+		<string>Music History</string>
+		<string>Choir</string>
+		<string>Jazz Band</string>
+		<string>Orchestra</string>
+		<string>Guitar Ens.</string>
+		<string>Drumline</string>
+		<string>Chamber Ens.</string>
+		<string>Guitar Indv.</string>
+		<string>Piano Indv.</string>
+		<string>Voice Indv.</string>
+		<string>Strings Indv.</string>
+		<string>Woodwinds Indv.</string>
+		<string>Brass Indv.</string>
+		<string>Percussion Indv.</string>
+		<string>Fashion Design</string>
+	</array>
+	<key>Sports</key>
+	<array>
+		<string>Topics</string>
+		<string>PE U.S.</string>
+		<string>Fitness</string>
+		<string>Tennis Field</string>
+		<string>Soccer Field</string>
+		<string>Track</string>
+		<string>Swimming</string>
+	</array>
+	<key>Seasonal</key>
+	<array>
+		<string>Health Seminar</string>
+		<string>College Counsel.</string>
+	</array>
+	<key>@(・●・)@</key>
+	<array>
+		<string>OFF</string>
+		<string>Lunch</string>
+		<string>Study Hall</string>
+	</array>
+</dict>
+</plist>

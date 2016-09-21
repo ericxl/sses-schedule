@@ -1,0 +1,106 @@
+/* 
+  Localizable.strings
+  StStephenSchedule
+
+  Created by Eric Liang on 8/24/12.
+  Copyright (c) 2012 St.Stephen's. All rights reserved.
+*/
+"About this app" = "About this app";
+"Created by:" = "Made by:";
+"Copyright:" = "Copyright:";
+"Please" = "Please";
+"Write a review" = "Write a review";
+"About St. Stephen's" = "About St. Stephen's";
+"Home site:" = "Home site:";
+"Home phone:" = "Home phone:";
+"Location:" = "Location:";
+"Contact Info & Bug Report" = "Contact Info & Bug Report";
+"Call Me" = "Call Me";
+"Email Me" = "Email Me";
+"Reset Data" = "Reset Data";
+"Reset All Data" = "Reset All Data";
+"Upper"="Upper";
+"Middle" = "Middle";
+
+"Done" = "Done";
+
+"A review please?" ="A review please?";
+
+"Do you like this app? Does it help you at St. Stephen's at all?\n\n Please support me and write a review. I appreciate it a lot.\n☆*:.｡. o(≧▽≦)o .｡.:*☆" =
+"Do you like this app? Does it help you at St. Stephen's at all?\n\n Please support me and write a review. I appreciate it a lot.\n☆*:.｡. o(≧▽≦)o .｡.:*☆";
+
+"Never ask me again." = "Never ask me again.";
+
+"Yes I'd like to:)" = "Yes I'd like to:)";
+
+"Remind me later..." = "Remind me later...";
+
+"So here is my number\n512-810-3874" = "So here is my number\n512-810-3874";
+
+"So call me maybe?" = "So call me maybe?";
+
+"No thanks" = "No thanks";
+
+"Yes" = "Yes";
+
+"Choose Email" = "Choose Email";
+
+"Cancel" = "Cancel";
+
+"My Gmail" = "My Gmail";
+
+"Clear Data?" = "Clear Data?";
+
+"Delete Selected Class?" = "Delete Selected Class?";
+
+"Version:" = "Version:";
+
+"Settings" = "Settings";
+
+"User Type" = "User Type";
+
+"Users" = "Users";
+
+"Share your schedule" = "Share your schedule";
+
+"Email" = "Email";
+
+"Message" = "Message";
+
+"Daily Calendar" = "Daily Calendar";
+
+"About" = "About";
+
+"Student" = "Student";
+
+"Teacher" = "Teacher";
+
+"Switch Section" = "Switch Section";
+
+"Switch and Reset Data" = "Switch and Reset Data";
+
+"Switch without Reset" = "Switch without Reset";
+
+"Teacher Name" = "Teacher Name";
+
+"Room #" = "Room #";
+
+"Class ID" = "Class ID";
+
+"For %@ Day Only" = "For %@ Day Only";
+
+"For All Days" = "For All Days";
+
+"Designed & Code by:" = "Designed & Code by:";
+
+"You are about to create a class" = "You are about to add a class";
+
+"Back without saving?" = "Back without saving?";
+
+"Discard Changes" = "Discard Changes";
+
+"Save" = "Save";
+
+"Text Me" = "Text Me";
+
+"Xiaoyong Liang"  = "Xiaoyong Liang";
