@@ -25,6 +25,10 @@
 		075656C61761C80300EDF804 /* UIColor+BButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 075656C31761C80300EDF804 /* UIColor+BButton.m */; };
 		075656C81761D0C900EDF804 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 075656C71761D0C900EDF804 /* FontAwesome.ttf */; };
 		075C2D651A98F4BC0053A62C /* sstxClasses_upper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */; };
+		0767773E1D94516500BCACB0 /* LICENSE_QuadCurve.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0767773D1D94516500BCACB0 /* LICENSE_QuadCurve.txt */; };
+		076777411D9451BD00BCACB0 /* LICENSE_BButton.md in Sources */ = {isa = PBXBuildFile; fileRef = 076777401D9451BD00BCACB0 /* LICENSE_BButton.md */; };
+		076777461D94537A00BCACB0 /* LICENSE_CoreTextWrapper.txt in Resources */ = {isa = PBXBuildFile; fileRef = 076777451D94537A00BCACB0 /* LICENSE_CoreTextWrapper.txt */; };
+		076777481D9453F400BCACB0 /* gemfont.txt in Resources */ = {isa = PBXBuildFile; fileRef = 076777471D9453F400BCACB0 /* gemfont.txt */; };
 		077F7DD21658A669006F19BA /* FirstWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077F7DD11658A669006F19BA /* FirstWelcomeViewController.m */; };
 		078FDD25162BA01900E88758 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 078FDD24162BA01900E88758 /* Settings.bundle */; };
 		07957455162F1AFE00DA51E9 /* icon-setting-high.png in Resources */ = {isa = PBXBuildFile; fileRef = 07957451162F1AFE00DA51E9 /* icon-setting-high.png */; };
@@ -109,6 +113,10 @@
 		075656C31761C80300EDF804 /* UIColor+BButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BButton.m"; sourceTree = "<group>"; };
 		075656C71761D0C900EDF804 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sstxClasses_upper.plist; sourceTree = "<group>"; };
+		0767773D1D94516500BCACB0 /* LICENSE_QuadCurve.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_QuadCurve.txt; sourceTree = "<group>"; };
+		076777401D9451BD00BCACB0 /* LICENSE_BButton.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_BButton.md; sourceTree = "<group>"; };
+		076777451D94537A00BCACB0 /* LICENSE_CoreTextWrapper.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_CoreTextWrapper.txt; sourceTree = "<group>"; };
+		076777471D9453F400BCACB0 /* gemfont.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gemfont.txt; sourceTree = "<group>"; };
 		077D6338175F27C200335A66 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		077F7DD01658A669006F19BA /* FirstWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstWelcomeViewController.h; sourceTree = "<group>"; };
 		077F7DD11658A669006F19BA /* FirstWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstWelcomeViewController.m; sourceTree = "<group>"; };
@@ -243,6 +251,55 @@
 			name = customUIs;
 			sourceTree = "<group>";
 		};
+		0767773C1D94514B00BCACB0 /* QuadCurve */ = {
+			isa = PBXGroup;
+			children = (
+				0767773D1D94516500BCACB0 /* LICENSE_QuadCurve.txt */,
+				07B06805162BBDFF00F7DC82 /* QuadCurveMenu.h */,
+				07B06806162BBDFF00F7DC82 /* QuadCurveMenu.m */,
+				07B06807162BBDFF00F7DC82 /* QuadCurveMenuItem.h */,
+				07B06808162BBDFF00F7DC82 /* QuadCurveMenuItem.m */,
+			);
+			name = QuadCurve;
+			sourceTree = "<group>";
+		};
+		0767773F1D94517800BCACB0 /* BButton */ = {
+			isa = PBXGroup;
+			children = (
+				075656BE1761C80200EDF804 /* BButton.h */,
+				075656BF1761C80200EDF804 /* BButton.m */,
+				076777401D9451BD00BCACB0 /* LICENSE_BButton.md */,
+				075656C21761C80300EDF804 /* UIColor+BButton.h */,
+				075656C31761C80300EDF804 /* UIColor+BButton.m */,
+			);
+			name = BButton;
+			sourceTree = "<group>";
+		};
+		076777421D94527300BCACB0 /* CoreTextWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				076777451D94537A00BCACB0 /* LICENSE_CoreTextWrapper.txt */,
+				07F7E045164ECE7F0091C8E9 /* UIFont+CoreTextExtensions.h */,
+				07F7E046164ECE7F0091C8E9 /* UIFont+CoreTextExtensions.m */,
+			);
+			name = CoreTextWrapper;
+			sourceTree = "<group>";
+		};
+		076777431D94534B00BCACB0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		076777441D94535400BCACB0 /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+				076777431D94534B00BCACB0 /* New Group */,
+			);
+			name = "New Group1";
+			sourceTree = "<group>";
+		};
 		077C4C601CD189D20044D773 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,20 +341,14 @@
 		078CE3C11CCF1AC100E14F5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				076777441D94535400BCACB0 /* New Group1 */,
+				076777421D94527300BCACB0 /* CoreTextWrapper */,
+				0767773F1D94517800BCACB0 /* BButton */,
+				0767773C1D94514B00BCACB0 /* QuadCurve */,
 				07D967C018A0BC9F00895593 /* ButtonView.h */,
 				07D967C118A0BC9F00895593 /* ButtonView.m */,
-				075656C21761C80300EDF804 /* UIColor+BButton.h */,
-				075656C31761C80300EDF804 /* UIColor+BButton.m */,
 				075656C01761C80300EDF804 /* NSString+FontAwesome.h */,
 				075656C11761C80300EDF804 /* NSString+FontAwesome.m */,
-				07F7E045164ECE7F0091C8E9 /* UIFont+CoreTextExtensions.h */,
-				07F7E046164ECE7F0091C8E9 /* UIFont+CoreTextExtensions.m */,
-				075656BE1761C80200EDF804 /* BButton.h */,
-				075656BF1761C80200EDF804 /* BButton.m */,
-				07B06805162BBDFF00F7DC82 /* QuadCurveMenu.h */,
-				07B06806162BBDFF00F7DC82 /* QuadCurveMenu.m */,
-				07B06807162BBDFF00F7DC82 /* QuadCurveMenuItem.h */,
-				07B06808162BBDFF00F7DC82 /* QuadCurveMenuItem.m */,
 			);
 			name = ThirdParty;
 			sourceTree = "<group>";
@@ -361,6 +412,7 @@
 				071C70E715BA9A5C00DD79D8 /* customUIs */,
 				07E32B3515CAD29C002D5D26 /* Dumbledor 1.ttf */,
 				075656C71761D0C900EDF804 /* FontAwesome.ttf */,
+				076777471D9453F400BCACB0 /* gemfont.txt */,
 				075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */,
 				07F76DB11A1AF69600398DB2 /* sstxClasses_middle.plist */,
 				07DD4CD216597BA6005E3837 /* classNeededChanges_middle.plist */,
@@ -433,8 +485,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0767773E1D94516500BCACB0 /* LICENSE_QuadCurve.txt in Resources */,
 				07D4385F1594BEFD0022BC05 /* InfoPlist.strings in Resources */,
 				075C2D651A98F4BC0053A62C /* sstxClasses_upper.plist in Resources */,
+				076777461D94537A00BCACB0 /* LICENSE_CoreTextWrapper.txt in Resources */,
 				07D438681594BEFD0022BC05 /* MainStoryboard.storyboard in Resources */,
 				07AF1EF01594EF3F0018E9CE /* emptyUserData.plist in Resources */,
 				07E32B3615CAD29C002D5D26 /* Dumbledor 1.ttf in Resources */,
@@ -468,6 +522,7 @@
 				07957457162F1AFE00DA51E9 /* icon-setting.png in Resources */,
 				07957458162F1AFE00DA51E9 /* icon-setting@2x.png in Resources */,
 				07957466162F1DFC00DA51E9 /* icon-share-high.png in Resources */,
+				076777481D9453F400BCACB0 /* gemfont.txt in Resources */,
 				07957467162F1DFC00DA51E9 /* icon-share-high@2x.png in Resources */,
 				07957468162F1DFC00DA51E9 /* icon-share.png in Resources */,
 				07957469162F1DFC00DA51E9 /* icon-share@2x.png in Resources */,
@@ -499,6 +554,7 @@
 				07B06809162BBDFF00F7DC82 /* QuadCurveMenu.m in Sources */,
 				07B0680A162BBDFF00F7DC82 /* QuadCurveMenuItem.m in Sources */,
 				07F7E048164ECE7F0091C8E9 /* UIFont+CoreTextExtensions.m in Sources */,
+				076777411D9451BD00BCACB0 /* LICENSE_BButton.md in Sources */,
 				07EE629016586E43002E5A73 /* SettingView.m in Sources */,
 				07EE6293165877E9002E5A73 /* UsersViewController.m in Sources */,
 				077F7DD21658A669006F19BA /* FirstWelcomeViewController.m in Sources */,
