@@ -50,44 +50,10 @@
         self.currentEditedDaySchedule = [NSMutableDictionary dictionaryWithDictionary:[self.editedSchedule objectForKey:editingDayDisplayedName]];
     }
 
-    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(gobackButtonClicked)];
+    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(gobackButtonClicked)];
     [customBarItem setTintColor:[UIColor whiteColor]];
     self.navigationItem.leftBarButtonItem = customBarItem;
-    
-    if (iPhone6) {
-        for (UIBarButtonItem *button in self.letterButtons) {
-            [button setWidth:41];
-        }
-    }
-    else if (iPhone6Plus ) {
-        for (UIBarButtonItem *button in self.letterButtons) {
-            [button setWidth:45.5];
-        }
-    }
-    else {
-        for (UIBarButtonItem *button in self.letterButtons) {
-            [button setWidth:34];
-        }
-    }
-    
-    /*
-    if (iPhone5) {
-        [editingTableView setFrame:CGRectMake(0, 44, 320, 524)];
-    }
-    else {
-        [editingTableView setFrame:CGRectMake(0, 44, 320, 436)];
-    }
-*/
-    /*
-    else {
-        
-        NSDictionary *dictionary=[NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"emptyUserData" withExtension:@"plist"]];
-        self.editedSchedule=[NSMutableDictionary dictionaryWithDictionary:dictionary];
-        NSDictionary *dict=[dictionary objectForKey:editingDayDisplayedName];
-        self.currentEditedDaySchedule=[NSMutableDictionary dictionaryWithDictionary:dict];
-    }
-     */
-	// Do any additional setup after loading the view.
+
 }
 
 -(void)applicationWillResignActiveNotification :(NSNotification *)nitification {
@@ -95,31 +61,24 @@
 }
 - (void) gobackButtonClicked {
     if ([self.isEdited boolValue]) {
-        UIActionSheet *actionsheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Back without saving?",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) destructiveButtonTitle:NSLocalizedString(@"Discard Changes", nil) otherButtonTitles:NSLocalizedString(@"Save",nil), nil];
-        actionsheet.tag=10;
-        actionsheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [actionsheet showInView:self.view];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Back without saving?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Discard Changes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action){
+            self.isEdited=[NSNumber numberWithBool:NO];
+            [self.navigationController popViewControllerAnimated:YES ];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+            [self saveData];
+            self.isEdited=[NSNumber numberWithBool:NO];
+            [self.navigationController popViewControllerAnimated:YES];
+        }]];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     else {
         [self.navigationController popViewControllerAnimated:YES ];
     }
 }
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    self.editingTableView=nil;
-    self.editedSchedule=nil;
-    self.currentEditedDaySchedule=nil;
-    self.editedDataFromPicker=nil;
-    self.editNavigationItem=nil;
-    self.toolbar=nil;
-    self.editingDayDisplayedName=nil;
-    self.isEdited=nil;
-    self.letterButtons = nil;
-    
-        // Release any retained subviews of the main view.
-}
+
 -(void)dealloc {
     //[super dealloc];
 
@@ -142,6 +101,13 @@
 {
     // Return the number of rows in the section.
     return 8;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingTableView.frame.size.height > 1){
+        return editingTableView.frame.size.height / [self tableView:editingTableView numberOfRowsInSection:0];
+    }
+    return 48;
 }
 
 
@@ -232,92 +198,54 @@
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Delete Selected Class?",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) destructiveButtonTitle:NSLocalizedString(@"For All Days",nil) otherButtonTitles:[NSString stringWithFormat:NSLocalizedString(@"For %@ Day Only",nil),editingDayDisplayedName], nil];
-    NSInteger row=[indexPath row]+1;
-    
-    actionSheet.tag=row;
-    actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    [actionSheet showInView:self.view];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Selected Class?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"For All Days" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action){
+        //delete all day
+        NSInteger row = [indexPath row]+1;
+        //period name and number
+        NSString *originalDayName = self.editingDayDisplayedName;
+        
+        NSString *originalNotIdentifiedClassID=[originalDayName stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)row]];
+        NSString *originalClassID = nil;
+        NSArray *classNeedChanges = nil;
+        if (IS_UPPER) {
+            originalClassID = [[NSDictionary dictionaryWithDictionary: [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"identifyClassID_upper" withExtension:@"plist"]]] objectForKey:originalNotIdentifiedClassID];
+            classNeedChanges=[[NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"classNeededChanges_upper" withExtension:@"plist"]] objectForKey:originalClassID];
+        }
+        else {
+            originalClassID = [[NSDictionary dictionaryWithDictionary: [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"identifyClassID_middle" withExtension:@"plist"]]] objectForKey:originalNotIdentifiedClassID];
+            classNeedChanges=[[NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"classNeededChanges_middle" withExtension:@"plist"]] objectForKey:originalClassID];
+        }
+        
+        //get info about class needed to be changed
+        //make changes
+        for (NSString *classTagString in classNeedChanges) {
+            NSString *classTagDay=[NSString stringWithFormat:@"%c",[classTagString characterAtIndex:0]];
+            NSString *classTagPeriod=[NSString stringWithFormat:@"%c",[classTagString characterAtIndex:1]];
+            
+            NSMutableDictionary *dict=[self.editedSchedule objectForKey:classTagDay];
+            NSDictionary *emptyClassPeriod=[NSDictionary dictionaryWithObjectsAndKeys:@"OFF",@"className",@"",@"teacherName",@"",@"locationName", nil];
+            
+            [dict setObject:emptyClassPeriod forKey:classTagPeriod];
+            
+        }
+        self.currentEditedDaySchedule=[self.editedSchedule objectForKey:self.editingDayDisplayedName];
+        [self.editingTableView reloadData];
+        self.isEdited=[NSNumber numberWithBool:YES];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"For %@ Day Only",editingDayDisplayedName] style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+        NSInteger row = [indexPath row]+1;
+        [self.currentEditedDaySchedule setObject: [NSDictionary dictionaryWithObjectsAndKeys:@"OFF",@"className",@"",@"teacherName",@"",@"locationName", nil] forKey:[NSString stringWithFormat:@"%ld",(long)row]];
+        [self.editedSchedule removeObjectForKey:self.editingDayDisplayedName];
+        [self.editedSchedule setObject:self.currentEditedDaySchedule forKey:self.editingDayDisplayedName];
+        [self.editingTableView reloadData];
+        self.isEdited=[NSNumber numberWithBool:YES];
+        
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (actionSheet.tag==10) {
-        if (buttonIndex==0) {
-            self.isEdited=[NSNumber numberWithBool:NO];
-            [self.navigationController popViewControllerAnimated:YES ];
-        }
-        else if (buttonIndex==1) {
-            [self saveData];
-            self.isEdited=[NSNumber numberWithBool:NO];
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        return;
-    }
-    
-    switch (buttonIndex) {
-        case 0:
-        {
-            //delete all day
-            
-            //period name and number
-            NSString *originalDayName = self.editingDayDisplayedName;
-
-            NSString *originalNotIdentifiedClassID=[originalDayName stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)actionSheet.tag]];
-            NSString *originalClassID = nil;
-            NSArray *classNeedChanges = nil;
-            if (IS_UPPER) {
-                originalClassID = [[NSDictionary dictionaryWithDictionary: [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"identifyClassID_upper" withExtension:@"plist"]]] objectForKey:originalNotIdentifiedClassID];
-                classNeedChanges=[[NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"classNeededChanges_upper" withExtension:@"plist"]] objectForKey:originalClassID];
-            }
-            else {
-                originalClassID = [[NSDictionary dictionaryWithDictionary: [NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"identifyClassID_middle" withExtension:@"plist"]]] objectForKey:originalNotIdentifiedClassID];
-                classNeedChanges=[[NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"classNeededChanges_middle" withExtension:@"plist"]] objectForKey:originalClassID];
-            }
-            
-            //get info about class needed to be changed
-            //make changes
-            for (NSString *classTagString in classNeedChanges) {
-                NSString *classTagDay=[NSString stringWithFormat:@"%c",[classTagString characterAtIndex:0]];
-                NSString *classTagPeriod=[NSString stringWithFormat:@"%c",[classTagString characterAtIndex:1]];
-                
-                NSMutableDictionary *dict=[self.editedSchedule objectForKey:classTagDay];
-                NSDictionary *emptyClassPeriod=[NSDictionary dictionaryWithObjectsAndKeys:@"OFF",@"className",@"",@"teacherName",@"",@"locationName", nil];
-                
-                [dict setObject:emptyClassPeriod forKey:classTagPeriod];
-                
-            }                
-            self.currentEditedDaySchedule=[self.editedSchedule objectForKey:self.editingDayDisplayedName];
-            [self.editingTableView reloadData];
-            self.isEdited=[NSNumber numberWithBool:YES];
-
-            //day name and number 
-        }
-            break;
-            
-        case 1:
-            //[self.currentEditedDaySchedule removeObjectForKey:[NSString stringWithFormat:@"%d",actionSheet.tag]];
-            [self.currentEditedDaySchedule setObject: [NSDictionary dictionaryWithObjectsAndKeys:@"OFF",@"className",@"",@"teacherName",@"",@"locationName", nil] forKey:[NSString stringWithFormat:@"%ld",(long)actionSheet.tag]];
-            [self.editedSchedule removeObjectForKey:self.editingDayDisplayedName];
-            [self.editedSchedule setObject:self.currentEditedDaySchedule forKey:self.editingDayDisplayedName];
-            [self.editingTableView reloadData];
-            self.isEdited=[NSNumber numberWithBool:YES];
-            
-            break;
-            
-    }
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (iPhone5) {
-        return 57.5;
-    }
-    else if (iPhone6) {
-        return 70;
-    }
-    else if (iPhone6Plus) {
-        return 78.5;
-    }
-    else return 46.5;
-}
 -(void)saveData
 {
     if (isEdited) {

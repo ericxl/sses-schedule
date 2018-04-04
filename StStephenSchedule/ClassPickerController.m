@@ -58,8 +58,7 @@
 
 @synthesize delegate;
 @synthesize selectedData;
-@synthesize ericLogo;
-@synthesize doneButton;
+
 @synthesize locationFrame, locationNewFrame;
 @synthesize teacherFrame, teacherNewFrame;
 
@@ -74,6 +73,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed)];
+    [customBarItem setTintColor:[UIColor whiteColor]];
+    self.navigationItem.rightBarButtonItem = customBarItem;
     
     //update class lists
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -119,12 +122,7 @@
     NSArray *sorted=[unsorted sortedArrayUsingSelector:@selector(compare:)];
     self.classCategory = sorted;
     
-    locationTextField.placeholder = NSLocalizedString(@"Room #", nil);
-    teacherTextField.placeholder = NSLocalizedString(@"Teacher Name",nil);
-    if (PERSON_TYPE == kUserTypePersonTeacher) {
-        teacherTextField.placeholder = NSLocalizedString(@"Class ID",nil);
-    }
-    
+
     self.classesData=dictionary;
     self.title = @"Class";
     if (selectedData) {
@@ -170,68 +168,14 @@
             [self.classesPicker reloadComponent:1];
             [self.classesPicker selectRow:classNum inComponent:1 animated:YES];
         }
-        //select picker
         
     }
-    
-    [doneButton.layer setBorderColor:[UIColor whiteColor].CGColor];
-    doneButton.layer.borderWidth = 1.0f;
-    doneButton.layer.cornerRadius = 5.0f;
 
-    ericLogo.alpha = 0.0;
-    
-    if (iPhone5) {
-        teacherFrame = CGRectMake(self.teacherTextField.frame.origin.x, 260.0f, self.teacherTextField.frame.size.width, self.teacherTextField.frame.size.height);
-        locationFrame = CGRectMake(self.locationTextField.frame.origin.x, 320.0f, self.locationTextField.frame.size.width, self.locationTextField.frame.size.height);
-        teacherNewFrame = CGRectMake(self.teacherTextField.frame.origin.x, 150.0f, self.teacherTextField.frame.size.width, self.teacherTextField.frame.size.height);
-        locationNewFrame = CGRectMake(self.locationTextField.frame.origin.x, 220.0f, self.locationTextField.frame.size.width, self.locationTextField.frame.size.height);
-    }
-    else if (iPhone6) {
-        teacherFrame = CGRectMake(self.teacherTextField.frame.origin.x, 300.0f, self.teacherTextField.frame.size.width, self.teacherTextField.frame.size.height);
-        locationFrame = CGRectMake(self.locationTextField.frame.origin.x, 380.0f, self.locationTextField.frame.size.width, self.locationTextField.frame.size.height);
-        teacherNewFrame = CGRectMake(self.teacherTextField.frame.origin.x, 180.0f, self.teacherTextField.frame.size.width, self.teacherTextField.frame.size.height);
-        locationNewFrame = CGRectMake(self.locationTextField.frame.origin.x, 240.0f, self.locationTextField.frame.size.width, self.locationTextField.frame.size.height);
-    }
-    else if (iPhone6Plus) {
-        teacherFrame = CGRectMake(self.teacherTextField.frame.origin.x, 300.0f, self.teacherTextField.frame.size.width, self.teacherTextField.frame.size.height);
-        locationFrame = CGRectMake(self.locationTextField.frame.origin.x, 380.0f, self.locationTextField.frame.size.width, self.locationTextField.frame.size.height);
-        teacherNewFrame = CGRectMake(self.teacherTextField.frame.origin.x, 210.0f, self.teacherTextField.frame.size.width, self.teacherTextField.frame.size.height);
-        locationNewFrame = CGRectMake(self.locationTextField.frame.origin.x, 290.0f, self.locationTextField.frame.size.width, self.locationTextField.frame.size.height);
-    }
-    else {
-        teacherFrame = CGRectMake(self.teacherTextField.frame.origin.x, 240.0f, self.teacherTextField.frame.size.width, self.teacherTextField.frame.size.height);
-        locationFrame = CGRectMake(self.locationTextField.frame.origin.x, 285.0f, self.locationTextField.frame.size.width, self.locationTextField.frame.size.height);
-        teacherNewFrame = CGRectMake(self.teacherTextField.frame.origin.x, 90.0f, self.teacherTextField.frame.size.width, self.teacherTextField.frame.size.height);
-        locationNewFrame = CGRectMake(self.locationTextField.frame.origin.x, 150.0f, self.locationTextField.frame.size.width, self.locationTextField.frame.size.height);
-    }
+
     
 }
--(void)viewDidLayoutSubviews {
-    [self.teacherTextField setFrame:teacherFrame];
-    [self.locationTextField setFrame:locationFrame];
-}
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    self.classesPicker=nil;
-    self.teacherTextField=nil;
-    self.locationTextField=nil;
-    self.classCategory=nil;
-    self.classesData=nil;
-    self.specifiedClasses=nil;
-    self.selectedData=nil;
-    self.ericLogo=nil;
-    self.doneButton=nil;
-    
-    // Release any retained subviews of the main view.
-}
--(void)viewWillAppear:(BOOL)animated {
-    [self.teacherTextField setFrame:teacherFrame];
-    [self.locationTextField setFrame:locationFrame];
-    
-    [super viewWillAppear:animated];
-}
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -240,6 +184,7 @@
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 2;
 }
+
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     if (component==0) {
@@ -295,39 +240,44 @@
     }
 }
 #pragma mark - DataPasstoEditBoard
--(IBAction)doneButtonPressed:(id)sender{
+-(void)doneButtonPressed{
     if ([delegate respondsToSelector:@selector(setEditedDataFromPicker:)]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"You are about to create a class" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
         
-        UIActionSheet * actionSheet = [[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"You are about to create a class",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) destructiveButtonTitle:NSLocalizedString(@"For All Days", nil) otherButtonTitles:[NSString stringWithFormat:NSLocalizedString(@"For %@ Day Only",nil),[self.selectedData objectForKey:@"dayDisplayedName"]], nil];
-        actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [actionSheet showInView:self.view];
+        [alert addAction:[UIAlertAction actionWithTitle:@"For All Days" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+            // For All Days
+            if ([delegate respondsToSelector:@selector(setEditedDataFromPicker:)]) {
+                NSString *className=[[self.classesData objectForKey:[self.classCategory objectAtIndex:[self.classesPicker selectedRowInComponent:0]]] objectAtIndex:[self.classesPicker selectedRowInComponent:1]];
+                NSIndexPath *indexPath=[self.selectedData objectForKey:@"indexPath"];
+
+                NSDictionary *aDict=[NSDictionary dictionaryWithObjectsAndKeys:indexPath,@"indexPath",className,@"className",self.teacherTextField.text,@"teacherName",self.locationTextField.text,@"locationName",[NSNumber numberWithBool:YES],@"rotationName", nil];
+                [delegate setValue:aDict forKey:@"editedDataFromPicker"];
+                [delegate setValue:[NSNumber numberWithBool:YES] forKey:@"isEdited"];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"For %@ Day Only",[self.selectedData objectForKey:@"dayDisplayedName"]] style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+            // For one day
+            if ([delegate respondsToSelector:@selector(setEditedDataFromPicker:)]) {
+                NSString *className=[[self.classesData objectForKey:[self.classCategory objectAtIndex:[self.classesPicker selectedRowInComponent:0]]] objectAtIndex:[self.classesPicker selectedRowInComponent:1]];
+                NSIndexPath *indexPath=[self.selectedData objectForKey:@"indexPath"];
+                
+                NSDictionary *aDict=[NSDictionary dictionaryWithObjectsAndKeys:indexPath,@"indexPath",className,@"className",self.teacherTextField.text,@"teacherName",self.locationTextField.text,@"locationName",[NSNumber numberWithBool:NO],@"rotationName", nil];
+                [delegate setValue:aDict forKey:@"editedDataFromPicker"];
+                [delegate setValue:[NSNumber numberWithBool:YES] forKey:@"isEdited"];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }]];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex != 2) {
-        if ([delegate respondsToSelector:@selector(setEditedDataFromPicker:)]) {
-            NSString *categoryName=[self.classCategory objectAtIndex:[self.classesPicker selectedRowInComponent:0]];
-            NSArray *array=[self.classesData objectForKey:categoryName];
-            NSString *className=[array objectAtIndex:[self.classesPicker selectedRowInComponent:1]];
-            NSIndexPath *indexPath=[self.selectedData objectForKey:@"indexPath"];
-            
-            NSString *teacher=self.teacherTextField.text;
-            NSString *location=self.locationTextField.text;
-            
-            BOOL isInRotaion = (buttonIndex == 0);
-            
-            
-            NSDictionary *aDict=[[NSDictionary alloc]initWithObjectsAndKeys:indexPath,@"indexPath",className,@"className",teacher,@"teacherName",location,@"locationName",[NSNumber numberWithBool:isInRotaion],@"rotationName", nil];
-            
-            [delegate setValue:aDict forKey:@"editedDataFromPicker"];
-            [delegate setValue:[NSNumber numberWithBool:YES] forKey:@"isEdited"];
-            
-        }
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    [self.scrollView setContentOffset:CGPointMake(0, 200)];
+    /*
     [UIView beginAnimations:@"Animate Up" context:nil];
 	[UIView setAnimationDuration:.3];
 	[UIView setAnimationBeginsFromCurrentState:YES];
@@ -341,10 +291,12 @@
 	[UIView setAnimationDuration:0.3];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
 	[UIView setAnimationBeginsFromCurrentState:YES];
-    [self.ericLogo setAlpha:1.0];
     [UIView commitAnimations];
+     */
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    /*
     [UIView beginAnimations:@"Animate Text Field Down" context:nil];
 	[UIView setAnimationDuration:.3];
 	[UIView setAnimationBeginsFromCurrentState:YES];
@@ -358,18 +310,30 @@
 	[UIView setAnimationDuration:0.3];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
 	[UIView setAnimationBeginsFromCurrentState:YES];
-    [self.ericLogo setAlpha:0.0];
     [UIView commitAnimations];
+     */
 }
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [teacherTextField resignFirstResponder];
     [locationTextField resignFirstResponder];
 }
--(IBAction)teacherFieldDone:(id)sender
+-(IBAction)teacherFieldDone:(UITextField *)sender
 {
     [locationTextField becomeFirstResponder];
 }
+
+- (IBAction)locationFieldDone:(UITextField *)sender {
+    
+}
+
+- (IBAction)backgroundTouched {
+    [teacherTextField resignFirstResponder];
+    [locationTextField resignFirstResponder];
+}
+
+
 -(NSString *)classesDataFilePath {
     NSArray *paths= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];

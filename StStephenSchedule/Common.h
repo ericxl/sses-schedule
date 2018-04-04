@@ -13,14 +13,6 @@
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 #define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
 #define iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
-#define iOS7  ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending)
-#define iOS8  ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending)
-#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
-#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
-
 
 #define kParseApplicationID @"zsaHWsnaGQ2urj5GjzVvAGdHj41sUh92bwphowle"
 #define kParseClientKey @"C1GnjrmPlftxQyQh1NyI87AUD09O21UqHYMWs7OV"
@@ -30,7 +22,6 @@
 #define kUserDefaultsKeyLaunchTimesSinceNewVersion @"launchTimesSinceNewVersion"
 #define kUserDefaultsKeyOldVersion @"oldVersion"
 #define kUserDefaultsKeyReviewRequested @"reviewRequested"
-#define kUserDefaultsKeyNewFeaturePageShowed @"newFeaturePageShowed"
 #define kUserDefaultsKeyAppCurrentVersion @"appCurrentVersion"
 #define kUserDefaultsKeyUpdateRemindTimes @"updateRemindTimes"
 #define kUserDefaultsKeyUserTypeSchoolSection @"userTypeSchoolSection"

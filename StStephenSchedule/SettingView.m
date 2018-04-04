@@ -43,13 +43,13 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 
-    editBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editButtonPressed)];
+    editBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editButtonPressed)];
     [editBarItem setTintColor:[UIColor whiteColor]];
     
-    addBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Add" style:UIBarButtonItemStyleBordered target:self action:@selector(addUserButtonPressed)];
+    addBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addUserButtonPressed)];
     [addBarItem setTintColor:[UIColor whiteColor]];
     
-    doneBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButtonPressed)];
+    doneBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed)];
     [doneBarItem setTintColor:[UIColor whiteColor]];
     
     
@@ -62,7 +62,7 @@
     
     NSString *filePath = PATH_FOR_FILE_IN_DOCUMENT_DOMAIN(kUsersNamesManagerFileName);
     if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
-        self.users=[[NSMutableArray alloc]initWithContentsOfFile:filePath];
+        self.users = [NSMutableArray arrayWithContentsOfFile:filePath];
     }
     else {
         NSArray *array = [NSArray arrayWithObject:CURRENT_USER_NAME];
@@ -113,19 +113,6 @@
         self.navigationItem.leftBarButtonItem = backBarItem;
         self.navigationItem.rightBarButtonItem = editBarItem;
     }
-}
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    self.myTableView = nil;
-    self.users = nil;
-    self.doneBarItem = nil;
-    self.addBarItem = nil;
-    self.backBarItem = nil;
-    self.editBarItem = nil;
-    self.lastIndexPath = nil;
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -240,9 +227,7 @@
 
 -(void)cellEditButtonPressed:(UIButton *) sender {
     UITableViewCell *buttonCell = (UITableViewCell *)[sender superview];
-    if (SYSTEM_VERSION_LESS_THAN(@"8.0") && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        buttonCell = (UITableViewCell *)[(UITableViewCell *)[sender superview] superview];
-    }
+
 
     NSUInteger buttonRow = [[self.myTableView
                              indexPathForCell:buttonCell] row];
@@ -275,45 +260,6 @@
     }
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
 #pragma mark - Table view delegate
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -335,10 +281,39 @@
     
     if ([indexPath section]==kSettingsTableViewGeneral) {
         if ([indexPath row] == 0) {
-            UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Clear Data?", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil)destructiveButtonTitle:NSLocalizedString(@"Reset All Data",nil) otherButtonTitles:nil, nil];
-            [actionSheet setActionSheetStyle:UIActionSheetStyleBlackOpaque];
-            actionSheet.tag = 1;
-            [actionSheet showInView:self.view];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Clear Data?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+            [alert addAction:[UIAlertAction actionWithTitle:@"Reset All Data" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action){
+                for (NSString *name in self.users) {
+                    NSError *error = nil;
+                    [[NSFileManager defaultManager]removeItemAtPath:PATH_FOR_DATA_OF_USER(name) error:&error];
+                }
+                
+                NSDictionary *dict = GENERATE_USER_DATA_DICTIONARY([NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"emptyUserData" withExtension:@"plist"]], @"Me",  kUserTypeSchoolSectionUpper, kUserTypePersonStudent);
+                SET_USER_DEFAULT(@"Me", kUserDefaultsKeyUserName);
+                NSString *filePath = PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME);
+                if (![[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
+                    [dict writeToFile:filePath atomically:YES];
+                }
+                
+                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserPersonType], kUserDefaultsKeyUserTypePerson);
+                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserSchoolSection], kUserDefaultsKeyUserTypeSchoolSection);
+                
+                NSMutableArray *indexPathes = [NSMutableArray array];
+                for (int i = 1; i<[[self users]count]; i++) {
+                    NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection: kSettingsTableViewSectionUsers];
+                    [indexPathes addObject:path];
+                    
+                }
+                [self.users removeAllObjects];
+                [self.users addObject:@"Me"];
+                [self.users writeToFile:PATH_FOR_FILE_IN_DOCUMENT_DOMAIN(kUsersNamesManagerFileName) atomically:YES];
+                
+                [self.myTableView deleteRowsAtIndexPaths:indexPathes withRowAnimation:YES];
+                [self.myTableView reloadData];
+            }]];
+            [self presentViewController:alert animated:YES completion:nil];
+            
         }
         
         
@@ -362,78 +337,9 @@
     }
     else if ([indexPath section] == kSettingsTableViewSectionUsers && [indexPath row] == [self.users count] ) {
         
-        
-        //add new
         [self addUserButtonPressed];
         
     }
 }
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    
-     if (alertView.tag == 1) {
-        if (buttonIndex == 0) {
-            /*
-            FBUsersViewController* loginViewController =
-            [[FBUsersViewController alloc]initWithNibName:@"FBUsersViewController" bundle:nil];
-            [self.navigationController pushViewController:loginViewController animated:YES];
-             */
-        }
-        else if (buttonIndex == 1) {
-            SET_USER_DEFAULT([NSNumber numberWithBool:YES], kUserDefaultsKeyReviewRequested);
-            [[UIApplication sharedApplication]
-             openURL:[NSURL URLWithString:ITUNES_STORE_URL]];
-        }
-    }
-}
-
-
-
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (actionSheet.tag==0) {
-        if (buttonIndex==0) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:MAIL_TO_URL]];
-        }
-    }
-    if (actionSheet.tag==1) {
-        if (buttonIndex==0) {
-            for (NSString *name in self.users) {
-                NSError *error = nil;
-                [[NSFileManager defaultManager]removeItemAtPath:PATH_FOR_DATA_OF_USER(name) error:&error];
-            }
-            
-            NSDictionary *dict = GENERATE_USER_DATA_DICTIONARY([NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"emptyUserData" withExtension:@"plist"]], @"Me",  kUserTypeSchoolSectionUpper, kUserTypePersonStudent);
-            SET_USER_DEFAULT(@"Me", kUserDefaultsKeyUserName);
-            NSString *filePath = PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME);
-            if (![[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
-                [dict writeToFile:filePath atomically:YES];
-            }
-            
-            SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserPersonType], kUserDefaultsKeyUserTypePerson);
-            SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserSchoolSection], kUserDefaultsKeyUserTypeSchoolSection);
-            
-            NSMutableArray *indexPathes = [NSMutableArray array];
-            for (int i = 1; i<[[self users]count]; i++) {
-                NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection: kSettingsTableViewSectionUsers];
-                [indexPathes addObject:path];
-
-            }
-            [self.users removeAllObjects];
-            [self.users addObject:@"Me"];
-            [self.users writeToFile:PATH_FOR_FILE_IN_DOCUMENT_DOMAIN(kUsersNamesManagerFileName) atomically:YES];
-
-            [self.myTableView deleteRowsAtIndexPaths:indexPathes withRowAnimation:YES];
-            [self.myTableView reloadData];
-            
-        }
-    }
-}
-
-
-// Add to top of file
-
-// Add new method
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
-@interface UsersViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate>
+@interface UsersViewController : UIViewController<UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *personTypeSegment;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *userTypeSegment;

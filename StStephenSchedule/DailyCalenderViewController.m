@@ -61,16 +61,6 @@ static CGRect middleViewFrame;
     
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    self.upper_middle_segment=nil;
-    self.upperContentView = nil;
-    self.middleContentView=nil;
-    // Release any retained subviews of the main view.
-}
-
 -(IBAction)upperLowerValueChange:(UISegmentedControl *)sender {
     switch (sender.selectedSegmentIndex) {
         case 0://choose upper

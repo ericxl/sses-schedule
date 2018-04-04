@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 //#import "MarqueeLabel.h"
 #import "ClassPickerController.h"
-@interface EditScheduleController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate>
+@interface EditScheduleController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *editingTableView;
 @property (strong, nonatomic) NSMutableDictionary *editedSchedule;

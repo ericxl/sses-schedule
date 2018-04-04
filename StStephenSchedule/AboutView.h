@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutView : UIViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate>
+@interface AboutView : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong)IBOutlet UITableView *myTableView;
 

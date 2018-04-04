@@ -41,12 +41,12 @@
     [super viewDidLoad];
 
     
-    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goback)];
+    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goback)];
     [customBarItem setTintColor:[UIColor whiteColor]];
     self.navigationItem.leftBarButtonItem = customBarItem;
     
     
-    UIBarButtonItem *customBarItemDone = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(save)];
+    UIBarButtonItem *customBarItemDone = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
     [customBarItemDone setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = customBarItemDone;
     
@@ -98,13 +98,16 @@
         return;
     }
     if (![[self.passedData objectForKey:kSettingsUsersPassedDataIsNew]boolValue] && [self.userNameTextField.text isEqualToString:@""]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Please enter a name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Please enter a name" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+        
         return;
     }
     if ([[(SettingView *)delegate users] containsObject:self.userNameTextField.text] && ![self.userNameTextField.text isEqualToString:self.userNameHolder]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Name already exists" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Name already exists" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
         return;
     }
     
@@ -156,20 +159,12 @@
     self.userNameHolder = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
 }
-- (void)viewDidUnload {
-    [self setUserTypeSegment:nil];
-    [self setPersonTypeSegment:nil];
-    [self setUserNameTextField:nil];
-    [self setDelegate:nil];
-    [self setPassedData:nil];
-    [self setUserNameHolder:nil];
-    [self setUserDataBuffer:nil];    
-    [super viewDidUnload];
-}
+
 - (IBAction)viewTouched:(UIControl *)sender {
     [userNameTextField resignFirstResponder];
 }
@@ -179,9 +174,20 @@
         [self.userDataBuffer setObject:[NSNumber numberWithInteger:sender.selectedSegmentIndex] forKey:kUserDataKeyUserSchoolSection];
     }
     else {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Switch Section",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil)destructiveButtonTitle:NSLocalizedString(@"Switch and Reset Data",nil) otherButtonTitles:NSLocalizedString(@"Switch without Reset",nil), nil];
-        [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-        [actionSheet showInView:self.view];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Switch Section" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action){
+            [self switchSegment:self.userTypeSegment];
+            [self.userDataBuffer setObject:[NSNumber numberWithInteger:userTypeSegment.selectedSegmentIndex] forKey:kUserDataKeyUserSchoolSection];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Switch and Reset Data" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action){
+            NSDictionary *emtpyDataDictionary=[NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"emptyUserData" withExtension:@"plist"]];
+            [self.userDataBuffer setObject:emtpyDataDictionary forKey:kUserDataKeyUserSchedule];
+            [self.userDataBuffer setObject:[NSNumber numberWithInteger:userTypeSegment.selectedSegmentIndex] forKey:kUserDataKeyUserSchoolSection];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Switch without Reset" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+            [self.userDataBuffer setObject:[NSNumber numberWithInteger:userTypeSegment.selectedSegmentIndex] forKey:kUserDataKeyUserSchoolSection];
+        }]];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -194,29 +200,5 @@
         sender.selectedSegmentIndex = 1;
     }
     else sender.selectedSegmentIndex = 0;
-}
-
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch (buttonIndex) {
-        case 0:
-        {
-            NSDictionary *emtpyDataDictionary=[NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"emptyUserData" withExtension:@"plist"]];
-            [self.userDataBuffer setObject:emtpyDataDictionary forKey:kUserDataKeyUserSchedule];
-            [self.userDataBuffer setObject:[NSNumber numberWithInteger:userTypeSegment.selectedSegmentIndex] forKey:kUserDataKeyUserSchoolSection];
-
-        }
-            break;
-            
-        case 1:
-        {
-            [self.userDataBuffer setObject:[NSNumber numberWithInteger:userTypeSegment.selectedSegmentIndex] forKey:kUserDataKeyUserSchoolSection];
-        }
-            break;
-            
-        case 2:
-            [self switchSegment:self.userTypeSegment];
-            [self.userDataBuffer setObject:[NSNumber numberWithInteger:userTypeSegment.selectedSegmentIndex] forKey:kUserDataKeyUserSchoolSection];
-            break;
-    }
 }
 @end

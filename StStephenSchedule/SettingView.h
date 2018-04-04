@@ -10,7 +10,7 @@
 #import <StoreKit/StoreKit.h>
 
 
-@interface SettingView : UIViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIActionSheetDelegate>
+@interface SettingView : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 
 @property (nonatomic, strong)IBOutlet UITableView *myTableView;

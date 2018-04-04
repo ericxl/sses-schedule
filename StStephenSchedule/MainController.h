@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMessageComposeViewController.h>
 #import <MessageUI/MFMailComposeViewController.h>
-#import "QuadCurveMenu.h"
-#import "QuadCurveMenuItem.h"
+#import "AwesomeMenu.h"
 #import "EditScheduleController.h"
-@class MarqueeLabel;
-@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UIAlertViewDelegate,QuadCurveMenuDelegate,UIActionSheetDelegate,MFMailComposeViewControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@class AwesomeMenu;
+@class AwesomeMenuItem;
+
+@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate,MFMessageComposeViewControllerDelegate,UIAlertViewDelegate,AwesomeMenuDelegate,UIActionSheetDelegate,MFMailComposeViewControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
 
@@ -23,10 +25,10 @@
 @property (strong, nonatomic) NSDictionary *scheduleData;
 @property (strong, nonatomic) NSDictionary *displayedSchedule;
 @property (strong, nonatomic) NSString *dayDisplayedName;
-@property (strong, nonatomic) QuadCurveMenu *menu;
-@property (strong, nonatomic) UIImageView *dayBanner;
-@property (strong, nonatomic) MarqueeLabel *marqueeLabel;
-@property (strong, nonatomic) IBOutletCollection(UIBarButtonItem) NSArray *letterDayButtons;
+@property (strong, nonatomic) AwesomeMenu *menu;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *letterButtons;
+
+
 -(IBAction)dayButtonPressed:(UIButton *)sender;
 -(IBAction)editButtonPressed:(UIButton *)sender;
 

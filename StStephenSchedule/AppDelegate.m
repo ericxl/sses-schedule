@@ -28,11 +28,10 @@
     [NSLocale autoupdatingCurrentLocale];
     //switching to polish locale
     //[[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],kUserDefaultsKeyFirstLaunch,nil]];
+
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]],kUserDefaultsKeyAppCurrentVersion,nil]];
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:0],kUserDefaultsKeyUpdateRemindTimes,nil]];
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], kUserDefaultsKeyOldVersion, nil]];
-    [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO], kUserDefaultsKeyNewFeaturePageShowed, nil]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:0], kUserDefaultsKeyLaunchTimesSinceNewVersion, nil]];
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:kUserTypeSchoolSectionUpper],kUserDefaultsKeyUserTypeSchoolSection,nil]];
     [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:kUserTypePersonStudent],kUserDefaultsKeyUserTypePerson,nil]];
@@ -52,17 +51,10 @@
     int launchTimes = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:kUserDefaultsKeyLaunchTimesSinceNewVersion]integerValue];
     [[NSUserDefaults standardUserDefaults] setInteger:launchTimes + 1 forKey:kUserDefaultsKeyLaunchTimesSinceNewVersion];
 
-    
-    
     return YES;
 
 }
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        [[UIApplication sharedApplication]
-         openURL:[NSURL URLWithString:ITUNES_STORE_URL]];
-    }
-}
+
 -(void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
     
 }
@@ -70,7 +62,6 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kUserDefaultsKeyFirstLaunch];
     [[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:kUserDefaultsKeyOldVersion];
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -97,7 +88,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kUserDefaultsKeyFirstLaunch];
     [[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:kUserDefaultsKeyOldVersion];
     
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

@@ -50,12 +50,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -111,7 +105,7 @@
         }
         else if ([indexPath row]==1) {
             firstLabel.text=NSLocalizedString(@"Copyright:",nil);
-            secondLabel.text=@"2012 Xiaoyong Liang";
+            secondLabel.text=@"2017 Xiaoyong Liang";
         }
         else if([indexPath row]==2) {
             firstLabel.text=NSLocalizedString(@"Version:",nil);
@@ -207,16 +201,36 @@
                 break;
             case 3:
             {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Watch Tutorial on YouTube?" message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:@"Go!", nil];
-                [alert setTag:19];
-                [alert show];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Watch Tutorial on YouTube?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+                [alert addAction:[UIAlertAction actionWithTitle:@"Go!" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+                    UIAlertController *tempAlert = [UIAlertController alertControllerWithTitle:@"Redirecting..." message:nil preferredStyle:UIAlertControllerStyleAlert];
+                    [self presentViewController:tempAlert animated:NO completion:nil];
+                    
+                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                        NSURL *indirectUrl = [NSURL URLWithString:YOUTUBE_TUTORIAL_LINK_URL];
+                        NSError *error = nil;
+                        NSData *fetchedIndirectString = [NSData dataWithContentsOfURL:indirectUrl options:0 error:&error];
+                        NSString *urlString = nil;
+                        if(!error && fetchedIndirectString && [fetchedIndirectString length] > 0) {
+                            urlString = [[NSString alloc]initWithData:fetchedIndirectString encoding:NSUTF8StringEncoding];
+                            if (urlString) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
+                                    [tempAlert dismissViewControllerAnimated:NO completion:nil];
+                                });
+                            }
+                        }
+                    });
+                }]];
+                [self presentViewController:alert animated:YES completion:nil];
             }
                 break;
             case 4:
             {
                 SET_USER_DEFAULT([NSNumber numberWithBool:YES], kUserDefaultsKeyReviewRequested);
                 [[UIApplication sharedApplication]
-                 openURL:[NSURL URLWithString:ITUNES_STORE_URL]];
+                 openURL:[NSURL URLWithString:ITUNES_STORE_URL] options:@{} completionHandler:nil];
             }
                 break;
                 
@@ -228,41 +242,40 @@
             case 0:
             {
                 NSURL *url=[NSURL URLWithString:SSES_HOME_URL];
-                [[UIApplication sharedApplication]openURL:url];
+                [[UIApplication sharedApplication]openURL:url options:@{} completionHandler:nil];
             }
                 break;
                 
             case 1:
             {
                 NSURL *url=[NSURL URLWithString:SSES_NET_CLASSROOM_URL];
-                [[UIApplication sharedApplication]openURL:url];
+                [[UIApplication sharedApplication]openURL:url options:@{} completionHandler:nil];
             }
                 break;
             case 2:
             {
                 NSURL *url=[NSURL URLWithString:SSES_MOODLE_URL];
-                [[UIApplication sharedApplication]openURL:url];
+                [[UIApplication sharedApplication]openURL:url options:@{} completionHandler:nil];
             }
                 break;
             case 3:
             {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SSES_TELEPHONE_URL]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SSES_TELEPHONE_URL] options:@{} completionHandler:nil];
             }
                 break;
-
         }
     }
     
     else {
         switch ([indexPath row]) {
-            
-                
             case 0:
             {
-                UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Choose Email",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"My Gmail",nil),nil];
-                actionSheet.tag=0;
-                actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-                [actionSheet showInView:self.view];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Choose Email" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+                [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+                [alert addAction:[UIAlertAction actionWithTitle:@"My Gmail" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:MAIL_TO_URL] options:@{} completionHandler:nil];
+                }]];
+                [self presentViewController:alert animated:YES completion:nil];
             }
                 break;
         }
@@ -278,45 +291,6 @@
         return 45;
     }
     
-}
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSInteger viewTag=alertView.tag;
-    
-    switch (viewTag) {
-        case 19: {
-            if (buttonIndex == 1) {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Redirecting..." message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
-                [alert show];
-                
-                dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                    NSURL *indirectUrl = [NSURL URLWithString:YOUTUBE_TUTORIAL_LINK_URL];
-                    NSError *error = nil;
-                    NSData *fetchedIndirectString = [NSData dataWithContentsOfURL:indirectUrl options:0 error:&error];
-                    NSString *urlString = nil;
-                    if(!error && fetchedIndirectString && [fetchedIndirectString length] > 0) {
-                        urlString = [[NSString alloc]initWithData:fetchedIndirectString encoding:NSUTF8StringEncoding];
-                        if (urlString) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:urlString]];
-                                [alert dismissWithClickedButtonIndex:-1 animated:NO];
-                            });
-                        }
-                    }
-                });
-            }
-        }
-            break;
-    }
-}
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (actionSheet.tag==0) {
-        if (buttonIndex==0) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:MAIL_TO_URL]];
-        }
-    }
 }
 
 @end

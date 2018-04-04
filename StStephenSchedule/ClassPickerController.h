@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GlowLabel.h"
+
 #import "EditScheduleController.h"
-@interface ClassPickerController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIActionSheetDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface ClassPickerController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIPickerView *classesPicker;
 @property (strong, nonatomic) IBOutlet UITextField *teacherTextField;
 @property (strong, nonatomic) IBOutlet UITextField *locationTextField;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) NSDictionary *classesData;
 @property (strong, nonatomic) NSArray *classCategory;
@@ -22,15 +23,13 @@
 @property (weak, nonatomic)id delegate;
 @property (strong, nonatomic) NSDictionary *selectedData;
 
-@property (strong, nonatomic) UISearchDisplayController *searchController;
 
-@property (strong, nonatomic) IBOutlet GlowLabel *ericLogo;
-@property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property (nonatomic) CGRect locationFrame;
 @property (nonatomic) CGRect teacherFrame;
 @property (nonatomic) CGRect locationNewFrame;
 @property (nonatomic) CGRect teacherNewFrame;
--(IBAction)doneButtonPressed:(id)sender;
--(IBAction)teacherFieldDone:(id)sender;
+-(IBAction)teacherFieldDone:(UITextField *)sender;
+- (IBAction)locationFieldDone:(UITextField *)sender;
+- (IBAction)backgroundTouched;
 
 @end

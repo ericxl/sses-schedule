@@ -1,16 +1,16 @@
 //
-//  QuadCurveMenuItem.h
+//  AwesomeMenuItem.h
 //  AwesomeMenu
 //
 //  Created by Levey on 11/30/11.
-//  Copyright (c) 2011 lunaapp.com. All rights reserved.
+//  Copyright (c) 2011 Levey & Other Contributors. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@protocol QuadCurveMenuItemDelegate;
+@protocol AwesomeMenuItemDelegate;
 
-@interface QuadCurveMenuItem : UIImageView
+@interface AwesomeMenuItem : UIImageView
 {
     UIImageView *_contentImageView;
     CGPoint _startPoint;
@@ -18,15 +18,17 @@
     CGPoint _nearPoint; // near
     CGPoint _farPoint; // far
     
-    id<QuadCurveMenuItemDelegate> __weak _delegate;
+    id<AwesomeMenuItemDelegate> __weak _delegate;
 }
+
+@property (nonatomic, strong, readonly) UIImageView *contentImageView;
 
 @property (nonatomic) CGPoint startPoint;
 @property (nonatomic) CGPoint endPoint;
 @property (nonatomic) CGPoint nearPoint;
 @property (nonatomic) CGPoint farPoint;
 
-@property (nonatomic, weak) id<QuadCurveMenuItemDelegate> delegate;
+@property (nonatomic, weak) id<AwesomeMenuItemDelegate> delegate;
 
 - (id)initWithImage:(UIImage *)img 
    highlightedImage:(UIImage *)himg
@@ -36,7 +38,7 @@ highlightedContentImage:(UIImage *)hcimg;
 
 @end
 
-@protocol QuadCurveMenuItemDelegate <NSObject>
-- (void)quadCurveMenuItemTouchesBegan:(QuadCurveMenuItem *)item;
-- (void)quadCurveMenuItemTouchesEnd:(QuadCurveMenuItem *)item;
+@protocol AwesomeMenuItemDelegate <NSObject>
+- (void)AwesomeMenuItemTouchesBegan:(AwesomeMenuItem *)item;
+- (void)AwesomeMenuItemTouchesEnd:(AwesomeMenuItem *)item;
 @end
