@@ -18,9 +18,7 @@
 @property (nonatomic, strong)NSIndexPath *lastIndexPath;
 
 @property (nonatomic, strong)UIBarButtonItem *addBarItem;
-@property (nonatomic, strong)UIBarButtonItem *backBarItem;
 @property (nonatomic, strong)UIBarButtonItem *doneBarItem;
-@property (nonatomic, strong)UIBarButtonItem *editBarItem;
 
 @end
 
@@ -40,23 +38,8 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-
-    self.editBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editButtonPressed)];
-    [self.editBarItem setTintColor:[UIColor whiteColor]];
-    
-    self.addBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addUserButtonPressed)];
-    [self.addBarItem setTintColor:[UIColor whiteColor]];
-    
-    self.doneBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed)];
-    [self.doneBarItem setTintColor:[UIColor whiteColor]];
-    
-    
-    self.navigationItem.leftBarButtonItem = self.backBarItem;
-
-    self.navigationItem.rightBarButtonItem = self.editBarItem;
-
-    
-    self.navigationItem.title = NSLocalizedString(@"Settings", nil);
+     
+    self.navigationItem.title = NSLocalizedString(@"Users", nil);
     
     NSString *filePath = PATH_FOR_FILE_IN_DOCUMENT_DOMAIN(kUsersNamesManagerFileName);
     if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
@@ -98,20 +81,7 @@
     }
     [self.navigationController pushViewController:usersViewController animated:YES];
 }
--(void)editButtonPressed {
-    [self.myTableView setEditing:!self.myTableView.editing];
-    if (self.myTableView.editing) {
-        self.navigationItem.leftBarButtonItem = self.addBarItem;
-        self.navigationItem.rightBarButtonItem = self.doneBarItem;
-    }
-}
--(void)doneButtonPressed {
-    [self.myTableView setEditing:!self.myTableView.editing];
-    if (!self.myTableView.editing) {
-        self.navigationItem.leftBarButtonItem = self.backBarItem;
-        self.navigationItem.rightBarButtonItem = self.editBarItem;
-    }
-}
+
 
 #pragma mark - Table view data source
 
@@ -119,9 +89,7 @@
 {    // Return the number of sections.
     return 2;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
-}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.

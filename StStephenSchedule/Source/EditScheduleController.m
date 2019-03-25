@@ -98,10 +98,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.editingTableView.frame.size.height > 1){
-        return self.editingTableView.frame.size.height / [self tableView:self.editingTableView numberOfRowsInSection:0];
-    }
-    return 48;
+    return self.editingTableView.frame.size.height / [self tableView:self.editingTableView numberOfRowsInSection:0];
 }
 
 

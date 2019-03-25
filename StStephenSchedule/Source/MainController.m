@@ -8,7 +8,6 @@
 
 #import "MainController.h"
 
-#import "AboutView.h"
 #import "SettingView.h"
 
 #define isWeekend ([self dateOfToday] == 1 || [self dateOfToday] == 7)
@@ -20,7 +19,6 @@
 
 @interface MainController ()
 
-@property (strong, nonatomic) AwesomeMenu *menu;
 @property (strong, nonatomic) NSDictionary *scheduleData;
 @property (strong, nonatomic) NSDictionary *displayedSchedule;
 
@@ -112,6 +110,9 @@
     self.displayedSchedule = [self.scheduleData objectForKey:self.dayDisplayedName];
     [self.navigationItem.rightBarButtonItem setAction:@selector(editButtonPressed:)];
     [self.navigationItem.rightBarButtonItem setTarget:self];
+    
+    [self.navigationItem.leftBarButtonItem setAction:@selector(settingsButtonClicked)];
+    [self.navigationItem.leftBarButtonItem setTarget:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -139,50 +140,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    
-    UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
-    UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
-    
-    AwesomeMenuItem *settingsMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:[UIImage imageNamed:@"icon-setting.png"] highlightedContentImage:[UIImage imageNamed:@"icon-setting-high.png"]];
-    AwesomeMenuItem *aboutMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:[UIImage imageNamed:@"icon-about.png"] highlightedContentImage:[UIImage imageNamed:@"icon-about-high.png"]];
-    AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"] highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"] ContentImage:[UIImage imageNamed:@"icon-plus.png"] highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
-   
-    self.menu  = [[AwesomeMenu alloc] initWithFrame:CGRectMake(self.view.frame.size.width * 0.85, self.view.frame.size.height * 0.90, 150, 150) startItem:startItem menuItems:@[aboutMenuItem, settingsMenuItem]];
-    [self.menu setStartPoint:CGPointZero];
-    self.menu.delegate = self;
 
-    self.menu.menuWholeAngle = M_PI /3;
-    self.menu.rotateAngle =  M_PI /2 *3;
-    [self.view addSubview:self.menu];
-    
-}
--(void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx{
-    switch (idx) {
-        case 0:
-        {
-            [self performSelector:@selector(quadAboutButtonClicked) withObject:nil afterDelay:0.15];
-        }
-            break;
-        case 1:
-        {
-            [self performSelector:@selector(quadSettingsButtonClicked) withObject:nil afterDelay:0.15];
-        }
-            break;
-    }
-}
-
-
--(void) quadAboutButtonClicked {
-    AboutView *aboutController = [self.storyboard instantiateViewControllerWithIdentifier:@"AboutView"];
-    [self.navigationController pushViewController:aboutController animated:YES];
-}
-
--(void)quadSettingsButtonClicked {
+-(void)settingsButtonClicked {
     SettingView *settingView = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
+    
     [self.navigationController pushViewController:settingView animated:YES];
-
 }
 
 #pragma mark - Table view data source
@@ -241,10 +203,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.myTableView.frame.size.height > 1){
-        return self.myTableView.frame.size.height / [self tableView:self.myTableView numberOfRowsInSection:0];
-    }
-    return 48;
+    return self.myTableView.frame.size.height / [self tableView:self.myTableView numberOfRowsInSection:0];
 }
 
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -280,6 +239,7 @@
     [editScheduleController setValue: self.dayDisplayedName forKey:@"editingDayDisplayedName"];
     [self.navigationController pushViewController:editScheduleController animated:YES];
 }
+
 -(IBAction)dayButtonPressed:(UIButton *)sender {
     NSString *day;
     switch (sender.tag) {
@@ -306,45 +266,6 @@
             break;
     }
     self.dayDisplayedName=day;
-}
-
--(CGRect)dayBannerFrameFromDay: (NSString *)dayString {
-    CGRect dayFrame;
-    CGFloat originY = 6.0f;
-    CGFloat originX = 15.0f;
-    if (iPhone6) {
-        originX = 19.0f;
-    }
-    else if (iPhone6Plus) {
-        originX = 25.0f;
-    }
-    CGFloat increment = 44.0f;
-    if (iPhone6) {
-        increment= 51.0f;
-    }
-    else if (iPhone6Plus) {
-        increment= 55.5f;
-    }
-    if ([dayString isEqualToString:@"B"]) {
-        originX += increment;
-    }
-    if ([dayString isEqualToString:@"C"]) {
-        originX += 2 * increment;
-    }
-    if ([dayString isEqualToString:@"D"]) {
-        originX += 3 * increment;
-    }
-    if ([dayString isEqualToString:@"E"]) {
-        originX += 4 * increment;
-    }
-    if ([dayString isEqualToString:@"F"]) {
-        originX += 5 * increment;
-    }
-    if ([dayString isEqualToString:@"G"]) {
-        originX += 6 * increment;
-    }
-    dayFrame = CGRectMake(originX, originY , 34, 34);
-    return dayFrame;
 }
 
 @end

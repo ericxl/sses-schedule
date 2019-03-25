@@ -193,8 +193,8 @@ All rights reserved.</string>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="pbj-4J-Akv"/>
                                     <barButtonItem width="34" style="plain" id="OK0-b9-i6A">
-                                        <button key="customView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="xTU-Mn-UDh">
-                                            <rect key="frame" x="32.666666666666664" y="7" width="30" height="30"/>
+                                        <button key="customView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xTU-Mn-UDh">
+                                            <rect key="frame" x="33" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="A">
@@ -207,8 +207,8 @@ All rights reserved.</string>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BlJ-M8-XjM"/>
                                     <barButtonItem width="34" style="plain" id="qEg-MV-gbs">
-                                        <button key="customView" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="45m-Lj-eXk">
-                                            <rect key="frame" x="79.333333333333329" y="7" width="30" height="30"/>
+                                        <button key="customView" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="45m-Lj-eXk">
+                                            <rect key="frame" x="79" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="B">
@@ -221,7 +221,7 @@ All rights reserved.</string>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cDF-eo-R6d"/>
                                     <barButtonItem width="34" style="plain" id="Wvl-cn-aA1">
-                                        <button key="customView" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="G7m-7Z-DC8">
+                                        <button key="customView" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="G7m-7Z-DC8">
                                             <rect key="frame" x="126" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -235,8 +235,8 @@ All rights reserved.</string>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nji-eK-wVX"/>
                                     <barButtonItem width="34" style="plain" id="lOC-Za-zJj">
-                                        <button key="customView" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="jNF-Y5-5Oy">
-                                            <rect key="frame" x="172.66666666666666" y="7" width="30" height="30"/>
+                                        <button key="customView" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jNF-Y5-5Oy">
+                                            <rect key="frame" x="173" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="D">
@@ -249,7 +249,7 @@ All rights reserved.</string>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="YwU-Yc-vtw"/>
                                     <barButtonItem width="34" style="plain" id="065-23-cZG">
-                                        <button key="customView" opaque="NO" clearsContextBeforeDrawing="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ROv-0J-KE4">
+                                        <button key="customView" opaque="NO" clearsContextBeforeDrawing="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ROv-0J-KE4">
                                             <rect key="frame" x="219" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -263,8 +263,8 @@ All rights reserved.</string>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="a0E-Ms-CiV"/>
                                     <barButtonItem width="34" style="plain" id="WYt-xN-SjR">
-                                        <button key="customView" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="sAc-7B-WFZ">
-                                            <rect key="frame" x="265.66666666666669" y="7" width="30" height="30"/>
+                                        <button key="customView" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sAc-7B-WFZ">
+                                            <rect key="frame" x="266" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="F">
@@ -277,8 +277,8 @@ All rights reserved.</string>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1Pi-HU-Hvy"/>
                                     <barButtonItem width="34" style="plain" id="sUs-09-1d7">
-                                        <button key="customView" opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Ox9-ru-jtg">
-                                            <rect key="frame" x="312.33333333333331" y="7" width="30" height="30"/>
+                                        <button key="customView" opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ox9-ru-jtg">
+                                            <rect key="frame" x="312" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="G">
@@ -307,6 +307,9 @@ All rights reserved.</string>
                         <viewLayoutGuide key="safeArea" id="M5T-I9-yfh"/>
                     </view>
                     <navigationItem key="navigationItem" id="Au0-oU-Oli">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="zNr-A5-O2S">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="organize" id="JiD-z4-7q0">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
@@ -327,55 +330,6 @@ All rights reserved.</string>
             </objects>
             <point key="canvasLocation" x="386.25" y="83.450704225352112"/>
         </scene>
-        <!--About-->
-        <scene sceneID="l0k-Z3-BI6">
-            <objects>
-                <viewController storyboardIdentifier="AboutView" id="X8l-vo-fSw" customClass="AboutView" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BgH-c7-6B3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="D4Z-ZI-Nwg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCellIdentifier" textLabel="QHG-rO-hEO" style="IBUITableViewCellStyleDefault" id="Vbn-ul-af2">
-                                        <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vbn-ul-af2" id="C4u-Dn-6vy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QHG-rO-hEO">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.666666666666664"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="X8l-vo-fSw" id="PVU-t8-aOd"/>
-                                    <outlet property="delegate" destination="X8l-vo-fSw" id="Zto-1T-ffe"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="N2c-4H-agy"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="About" id="EaZ-I7-6dD"/>
-                    <connections>
-                        <outlet property="myTableView" destination="D4Z-ZI-Nwg" id="KO3-cN-ouK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qqq-2w-9Lx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1062.4000000000001" y="-438.91625615763547"/>
-        </scene>
         <!--Setting View-->
         <scene sceneID="wOv-fD-ggg">
             <objects>
@@ -389,25 +343,8 @@ All rights reserved.</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FBCellIdentifier" id="XIw-0g-lYG">
-                                        <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XIw-0g-lYG" id="HQG-Wr-AlZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5q-xJ-5hB">
-                                                    <rect key="frame" x="68" y="10" width="164" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                                    <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="19"/>
-                                                    <color key="textColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="UsersCellIdentifier" editingAccessoryType="disclosureIndicator" id="Gyb-Qb-keP">
-                                        <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gyb-Qb-keP" id="yed-x3-czX">
                                             <rect key="frame" x="0.0" y="0.0" width="336" height="43.666666666666664"/>
@@ -430,7 +367,7 @@ All rights reserved.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResetCellIdentifier" id="5Oz-qO-AWk">
-                                        <rect key="frame" x="0.0" y="143.33333333333334" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Oz-qO-AWk" id="fNW-CB-G7z">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
@@ -447,7 +384,7 @@ All rights reserved.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddUserCellIdentifier" id="gH3-57-DME">
-                                        <rect key="frame" x="0.0" y="187.33333333333334" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="143.33333333333334" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gH3-57-DME" id="skS-uA-bjY">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
@@ -741,21 +678,6 @@ All rights reserved.</string>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDA-Dr-ccs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Fec-wX-uvK">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <viewLayoutGuide key="safeArea" id="zhG-qV-U8A"/>
-                    <items>
-                        <barButtonItem title="A" width="35" id="UHZ-Ff-MyR"/>
-                        <barButtonItem title="B" width="35" id="YBw-Oj-d0v"/>
-                        <barButtonItem title="C" width="35" id="Mcu-p8-Xao"/>
-                        <barButtonItem title="D" width="35" id="We5-E5-y9p"/>
-                        <barButtonItem title="E" width="35" id="IaZ-vq-lou"/>
-                        <barButtonItem title="F" width="35" id="MWd-ux-L2g"/>
-                        <barButtonItem title="G" width="35" id="gPm-2d-Sy5"/>
-                    </items>
-                    <color key="tintColor" red="0.55294117649999996" green="0.16862745100000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </toolbar>
             </objects>
             <point key="canvasLocation" x="-532" y="84"/>
         </scene>

@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AwesomeMenu.h"
+
 #import "EditScheduleController.h"
 
-@class AwesomeMenu;
-@class AwesomeMenuItem;
-
-@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,AwesomeMenuDelegate,UIActionSheetDelegate, UINavigationControllerDelegate>
+@interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;

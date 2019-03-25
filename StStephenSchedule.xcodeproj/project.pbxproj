@@ -10,10 +10,7 @@
 		071E4CB115BD6906008A9457 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 071E4CB015BD6906008A9457 /* MainController.m */; };
 		075C2D651A98F4BC0053A62C /* sstxClasses_upper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */; };
 		076696F022489BED0070D6B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076696EF22489BED0070D6B1 /* QuartzCore.framework */; };
-		0797167715BD6289005ADE3A /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0797167615BD6289005ADE3A /* AboutView.m */; };
 		07A6D5771FAE589B006F36FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A6D5761FAE589B006F36FB /* LaunchScreen.storyboard */; };
-		07A6D5801FAEA3E5006F36FB /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A6D57E1FAEA3E4006F36FB /* AwesomeMenuItem.m */; };
-		07A6D5811FAEA3E5006F36FB /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A6D57F1FAEA3E4006F36FB /* AwesomeMenu.m */; };
 		07AF1EF01594EF3F0018E9CE /* emptyUserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07AF1EEF1594EF3F0018E9CE /* emptyUserData.plist */; };
 		07D438551594BEFD0022BC05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D438541594BEFD0022BC05 /* UIKit.framework */; };
 		07D438571594BEFD0022BC05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D438561594BEFD0022BC05 /* Foundation.framework */; };
@@ -38,13 +35,7 @@
 		071E4CB015BD6906008A9457 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sstxClasses_upper.plist; sourceTree = "<group>"; };
 		076696EF22489BED0070D6B1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0797167515BD6289005ADE3A /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
-		0797167615BD6289005ADE3A /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
 		07A6D5761FAE589B006F36FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		07A6D57C1FAEA3E4006F36FB /* AwesomeMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
-		07A6D57D1FAEA3E4006F36FB /* AwesomeMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
-		07A6D57E1FAEA3E4006F36FB /* AwesomeMenuItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
-		07A6D57F1FAEA3E4006F36FB /* AwesomeMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
 		07AF1EEF1594EF3F0018E9CE /* emptyUserData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emptyUserData.plist; sourceTree = "<group>"; };
 		07D438501594BEFD0022BC05 /* StStephenSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StStephenSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D438541594BEFD0022BC05 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -100,14 +91,8 @@
 				07D438761594BF490022BC05 /* ClassPickerController.m */,
 				07EE628E16586E43002E5A73 /* SettingView.h */,
 				07EE628F16586E43002E5A73 /* SettingView.m */,
-				0797167515BD6289005ADE3A /* AboutView.h */,
-				0797167615BD6289005ADE3A /* AboutView.m */,
 				07EE6291165877E9002E5A73 /* UsersViewController.h */,
 				07EE6292165877E9002E5A73 /* UsersViewController.m */,
-				07A6D57C1FAEA3E4006F36FB /* AwesomeMenu.h */,
-				07A6D57F1FAEA3E4006F36FB /* AwesomeMenu.m */,
-				07A6D57D1FAEA3E4006F36FB /* AwesomeMenuItem.h */,
-				07A6D57E1FAEA3E4006F36FB /* AwesomeMenuItem.m */,
 				07D438601594BEFD0022BC05 /* main.m */,
 			);
 			path = Source;
@@ -256,12 +241,9 @@
 			files = (
 				07D438611594BEFD0022BC05 /* main.m in Sources */,
 				07D438651594BEFD0022BC05 /* AppDelegate.m in Sources */,
-				07A6D5811FAEA3E5006F36FB /* AwesomeMenu.m in Sources */,
 				07D438771594BF490022BC05 /* ClassPickerController.m in Sources */,
 				07D438821594C2DD0022BC05 /* EditScheduleController.m in Sources */,
-				0797167715BD6289005ADE3A /* AboutView.m in Sources */,
 				071E4CB115BD6906008A9457 /* MainController.m in Sources */,
-				07A6D5801FAEA3E5006F36FB /* AwesomeMenuItem.m in Sources */,
 				07EE629016586E43002E5A73 /* SettingView.m in Sources */,
 				07EE6293165877E9002E5A73 /* UsersViewController.m in Sources */,
 			);

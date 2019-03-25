@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPressed)];
+    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed)];
     [customBarItem setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = customBarItem;
     
