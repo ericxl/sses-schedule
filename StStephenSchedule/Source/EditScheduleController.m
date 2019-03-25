@@ -24,7 +24,7 @@
     [super viewDidLoad];
     self.isEdited=[NSNumber numberWithBool:NO];
     
-    self.editNavigationItem.title=[NSString stringWithFormat:NSLocalizedString( @"Edit %@ Day",nil),self.editingDayDisplayedName];
+    self.title=[NSString stringWithFormat:NSLocalizedString( @"Edit %@ Day",nil),self.editingDayDisplayedName];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     NSString *filePath = PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME);
     if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
@@ -32,15 +32,27 @@
         self.currentEditedDaySchedule = [NSMutableDictionary dictionaryWithDictionary:[self.editedSchedule objectForKey:self.editingDayDisplayedName]];
     }
 
-    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(gobackButtonClicked)];
-    [customBarItem setTintColor:[UIColor whiteColor]];
-    self.navigationItem.leftBarButtonItem = customBarItem;
+//    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(gobackButtonClicked)];
+//    [customBarItem setTintColor:[UIColor whiteColor]];
+//    self.navigationItem.leftBarButtonItem = customBarItem;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActiveNotification:) name:UIApplicationWillResignActiveNotification object:[UIApplication sharedApplication]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (self.isMovingFromParentViewController)
+    {
+        [self saveData];
+        if ([self.delegate respondsToSelector:@selector(setDayDisplayedName:)]) {
+            [self.delegate setValue:self.editingDayDisplayedName forKey:@"dayDisplayedName"];
+        }
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -52,7 +64,8 @@
 -(void)applicationWillResignActiveNotification :(NSNotification *)nitification {
     [self saveData];
 }
-- (void) gobackButtonClicked {
+
+- (void)gobackButtonClicked {
     if ([self.isEdited boolValue]) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Back without saving?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
@@ -302,7 +315,7 @@
     }
     self.editingDayDisplayedName=day;
     self.currentEditedDaySchedule=[self.editedSchedule objectForKey:self.editingDayDisplayedName];
-    self.editNavigationItem.title=[NSString stringWithFormat:@"Edit %@ Day",self.editingDayDisplayedName];
+    self.title=[NSString stringWithFormat:@"Edit %@ Day",self.editingDayDisplayedName];
     [self.editingTableView reloadData];
     
 }

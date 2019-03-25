@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14724.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PJ6-TL-6JW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PJ6-TL-6JW">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="4368" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14690.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,7 +34,7 @@
                                                 </connections>
                                             </pickerView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Teacher" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qfc-Ja-Tid">
-                                                <rect key="frame" x="60" y="264" width="256" height="30"/>
+                                                <rect key="frame" x="59.666666666666657" y="264" width="255.99999999999997" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="256" id="mtH-H2-Wnd"/>
                                                 </constraints>
@@ -46,7 +46,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Room" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="r2S-Vu-ieH">
-                                                <rect key="frame" x="60" y="342" width="256" height="30"/>
+                                                <rect key="frame" x="59.666666666666657" y="342" width="255.99999999999997" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="256" id="kC5-lK-Hwv"/>
                                                 </constraints>
@@ -58,7 +58,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ4-n7-T8Z">
-                                                <rect key="frame" x="60" y="706" width="256" height="24"/>
+                                                <rect key="frame" x="59.666666666666657" y="706" width="255.99999999999997" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="256" id="JWC-gh-za5"/>
                                                 </constraints>
@@ -122,7 +122,7 @@ All rights reserved.</string>
             <objects>
                 <viewController id="na9-4l-dKT" customClass="MainController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qO7-yd-hEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OHf-Fh-GpC">
@@ -307,19 +307,8 @@ All rights reserved.</string>
                         <viewLayoutGuide key="safeArea" id="M5T-I9-yfh"/>
                     </view>
                     <navigationItem key="navigationItem" id="Au0-oU-Oli">
-                        <barButtonItem key="rightBarButtonItem" tag="1" width="40" id="sqF-BL-WST">
-                            <button key="customView" opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QV9-aI-9ww">
-                                <rect key="frame" x="319" y="7" width="40" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Edit">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="editButtonPressed:" destination="na9-4l-dKT" eventType="touchUpInside" id="pMO-3f-gkW"/>
-                                </connections>
-                            </button>
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="JiD-z4-7q0">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -351,67 +340,19 @@ All rights reserved.</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCellIdentifier" id="Vbn-ul-af2">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="375" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCellIdentifier" textLabel="QHG-rO-hEO" style="IBUITableViewCellStyleDefault" id="Vbn-ul-af2">
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vbn-ul-af2" id="C4u-Dn-6vy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" fixedFrame="YES" text="Designed by:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Goh-lj-VC1">
-                                                    <rect key="frame" x="16" y="11" width="101" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" fixedFrame="YES" text="Xiaoyong (Eric) Liang" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uyS-3L-rBF">
-                                                    <rect key="frame" x="142" y="11" width="219" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QHG-rO-hEO">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.666666666666664"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCellIdentifier" id="4cq-rU-qsP">
-                                        <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4cq-rU-qsP" id="Cr6-lP-hBw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" fixedFrame="YES" text="Call Eric Maybe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vfz-w0-VDF">
-                                                    <rect key="frame" x="73" y="11" width="230" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MapCellIdentifier" rowHeight="70" id="eZr-U5-kob">
-                                        <rect key="frame" x="0.0" y="143.33333333333334" width="375" height="70"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZr-U5-kob" id="enB-hj-Coj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.666666666666671"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" fixedFrame="YES" text="Location:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-FX-Ggr">
-                                                    <rect key="frame" x="8" y="24" width="107" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" fixedFrame="YES" text="6500 St. Stephen's Dr. Austin, TX 78746" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vUy-I0-eA9">
-                                                    <rect key="frame" x="142" y="4" width="218" height="61"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -449,7 +390,7 @@ All rights reserved.</string>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FBCellIdentifier" id="XIw-0g-lYG">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XIw-0g-lYG" id="HQG-Wr-AlZ">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.666666666666664"/>
@@ -652,7 +593,7 @@ All rights reserved.</string>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BHd-xL-F27"/>
                                     <barButtonItem width="34" style="plain" id="s1l-tV-OeG">
                                         <button key="customView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fJv-9C-rKv">
-                                            <rect key="frame" x="32.666666666666664" y="9.6666666666666643" width="30" height="30"/>
+                                            <rect key="frame" x="32.666666666666664" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="A">
@@ -666,7 +607,7 @@ All rights reserved.</string>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="qYl-6D-bU8"/>
                                     <barButtonItem width="34" style="plain" id="gZ0-dV-7tb">
                                         <button key="customView" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="myK-gz-8gE">
-                                            <rect key="frame" x="79.333333333333329" y="9.6666666666666643" width="30" height="30"/>
+                                            <rect key="frame" x="79.333333333333329" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="B">
@@ -680,7 +621,7 @@ All rights reserved.</string>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Kt6-pk-7p8"/>
                                     <barButtonItem width="34" style="plain" id="wPm-n2-ulM">
                                         <button key="customView" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="t4I-26-AgM">
-                                            <rect key="frame" x="126" y="9.6666666666666643" width="30" height="30"/>
+                                            <rect key="frame" x="126" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="C">
@@ -694,7 +635,7 @@ All rights reserved.</string>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QaJ-xJ-5oY"/>
                                     <barButtonItem width="34" style="plain" id="g56-j4-ERP">
                                         <button key="customView" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M1K-bF-QrQ">
-                                            <rect key="frame" x="172.66666666666666" y="9.6666666666666643" width="30" height="30"/>
+                                            <rect key="frame" x="172.66666666666666" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="D">
@@ -708,7 +649,7 @@ All rights reserved.</string>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8Vw-QC-4a2"/>
                                     <barButtonItem width="34" style="plain" id="FPY-LJ-wso">
                                         <button key="customView" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vds-UQ-Sge">
-                                            <rect key="frame" x="219" y="9.6666666666666643" width="30" height="30"/>
+                                            <rect key="frame" x="219" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="E">
@@ -722,7 +663,7 @@ All rights reserved.</string>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="BVL-Hl-pjr"/>
                                     <barButtonItem width="34" style="plain" id="pbJ-dU-AGG">
                                         <button key="customView" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RT7-DS-zfX">
-                                            <rect key="frame" x="265.66666666666669" y="9.6666666666666643" width="30" height="30"/>
+                                            <rect key="frame" x="265.66666666666669" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="F">
@@ -736,7 +677,7 @@ All rights reserved.</string>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="yql-bb-YQN"/>
                                     <barButtonItem width="34" style="plain" id="uGT-fe-VrI">
                                         <button key="customView" opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mUn-Ze-GLv">
-                                            <rect key="frame" x="312.33333333333331" y="9.6666666666666643" width="30" height="30"/>
+                                            <rect key="frame" x="312.33333333333331" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="G">
@@ -765,27 +706,8 @@ All rights reserved.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NHl-Ir-K0v"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Schedule" id="GNR-pk-c86">
-                        <barButtonItem key="backBarButtonItem" title="Back" style="done" id="nXz-yQ-hHc">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" id="eG8-AM-w1B">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qdZ-Oy-FGc">
-                                <rect key="frame" x="259" y="7" width="45" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButtonPressed:" destination="3py-IV-RxA" eventType="touchUpInside" id="5Zj-JQ-Ea1"/>
-                                </connections>
-                            </button>
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Edit Schedule" id="GNR-pk-c86"/>
                     <connections>
-                        <outlet property="editNavigationItem" destination="GNR-pk-c86" id="Zci-Rk-0OP"/>
                         <outlet property="editingTableView" destination="xcX-Ri-lhe" id="xMD-eB-WcN"/>
                         <outlet property="toolbar" destination="Eil-8g-UQO" id="jIm-0F-hVx"/>
                         <outletCollection property="letterButtons" destination="s1l-tV-OeG" id="bCm-4l-V2s"/>
@@ -838,5 +760,5 @@ All rights reserved.</string>
             <point key="canvasLocation" x="-532" y="84"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

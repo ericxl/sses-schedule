@@ -9,10 +9,7 @@
 #import "AboutView.h"
 
 #define kTableViewSectionAboutThisApp 0
-#define kTableViewSectionAboutSSTX 1
-#define kTableViewSectionContactBug 2
-#define kTableViewSectionResetData 3
-
+#define kTableViewSectionContactBug 1
 
 @interface AboutView ()
 
@@ -53,19 +50,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {    // Return the number of sections.
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (section==kTableViewSectionAboutThisApp) {
+    if (section==kTableViewSectionAboutThisApp)
+    {
         return 3;
     }
-    else if(section==kTableViewSectionAboutSSTX){
-        return 5;
-    }
-    else {
+    else
+    {
         return 1;
     }
 }
@@ -73,69 +69,30 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSString *CellIdentifier =nil;
-    if ([indexPath section]==kTableViewSectionAboutThisApp || [indexPath section]==kTableViewSectionAboutSSTX) {
-        CellIdentifier=@"AboutCellIdentifier";
-    }
-    else {
-        CellIdentifier=@"ContactCellIdentifier";
-    }
-    if ([indexPath section]==kTableViewSectionAboutSSTX && [indexPath row]==4) {
-        CellIdentifier=@"MapCellIdentifier";
-    }
+    NSString *CellIdentifier = @"AboutCellIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
-
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    UILabel *firstLabel=(UILabel *)[cell viewWithTag:1];
-    UILabel *secondLabel=(UILabel *)[cell viewWithTag:2];
     
     if ([indexPath section]==kTableViewSectionAboutThisApp) {
         if ([indexPath row]==0) {
-            firstLabel.text=NSLocalizedString(@"Design & Code:",nil);
-            secondLabel.text=NSLocalizedString(@"Xiaoyong Liang",nil);
+            cell.textLabel.text=NSLocalizedString(@"Designed by: Xiaoyong Liang",nil);
         }
         else if ([indexPath row]==1) {
-            firstLabel.text=NSLocalizedString(@"Copyright:",nil);
-            secondLabel.text=@"2017 Xiaoyong Liang";
+            cell.textLabel.text=NSLocalizedString(@"Copyright: 2017 Xiaoyong Liang",nil);
         }
         else if([indexPath row]==2) {
-            firstLabel.text=NSLocalizedString(@"Version:",nil);
-            secondLabel.text=[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+            cell.textLabel.text= [NSString stringWithFormat:@"Version: %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 
         }
     }
-    else if ([indexPath section]==kTableViewSectionAboutSSTX) {
-        switch ([indexPath row]) {
-            case 0:
-                firstLabel.text=NSLocalizedString(@"Home Page:",nil);
-                secondLabel.text=@"www.sstx.org";
-                break;
-                
-            case 1:
-                firstLabel.text=@"Net Classroom:";
-                secondLabel.text=@"bbnet.sstx.org";
-                break;
-            case 2:
-                firstLabel.text=@"Moodle:";
-                secondLabel.text=@"moodle.sstx.org";
-                break;
-            case 3:
-                firstLabel.text=NSLocalizedString(@"Phone:",nil);
-                secondLabel.text=@"512-327-1213";
-                break;
-            case 4:
-                firstLabel.text=NSLocalizedString(@"Location:",nil);
-                secondLabel.text=@"6500 St. Stephen's Dr. Austin, TX 78746";
-                break;
-        }
-    }
+    
     else{
         switch ([indexPath row]) {
             case 0:
-                firstLabel.text=NSLocalizedString(@"Email Me",nil);
+                cell.textLabel.text=NSLocalizedString(@"Email Me",nil);
                 break;
         }
     }
@@ -148,9 +105,6 @@
     switch (section) {
         case kTableViewSectionAboutThisApp:
             return [NSString stringWithFormat:NSLocalizedString(@"About this app",nil)];
-            break;
-        case kTableViewSectionAboutSSTX:
-            return [NSString stringWithFormat:NSLocalizedString(@"About St. Stephen's Episcopal School",nil)];
             break;
         default:
             return [NSString stringWithFormat:NSLocalizedString(@"Contact Info & Bug Report",nil)];
@@ -187,36 +141,6 @@
                 
         }
     }
-    
-    else if ([indexPath section]==kTableViewSectionAboutSSTX) {
-        switch ([indexPath row]) {
-            case 0:
-            {
-                NSURL *url=[NSURL URLWithString:SSES_HOME_URL];
-                [[UIApplication sharedApplication]openURL:url options:@{} completionHandler:nil];
-            }
-                break;
-                
-            case 1:
-            {
-                NSURL *url=[NSURL URLWithString:SSES_NET_CLASSROOM_URL];
-                [[UIApplication sharedApplication]openURL:url options:@{} completionHandler:nil];
-            }
-                break;
-            case 2:
-            {
-                NSURL *url=[NSURL URLWithString:SSES_MOODLE_URL];
-                [[UIApplication sharedApplication]openURL:url options:@{} completionHandler:nil];
-            }
-                break;
-            case 3:
-            {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SSES_TELEPHONE_URL] options:@{} completionHandler:nil];
-            }
-                break;
-        }
-    }
-    
     else {
         switch ([indexPath row]) {
             case 0:
@@ -230,16 +154,6 @@
             }
                 break;
         }
-    }
-    
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath section]==kTableViewSectionAboutSSTX && [indexPath row]==4) {
-        return 70;
-    }
-    else {
-        return 45;
     }
     
 }

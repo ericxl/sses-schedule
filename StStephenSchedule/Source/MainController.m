@@ -110,6 +110,8 @@
         });
     });
     self.displayedSchedule = [self.scheduleData objectForKey:self.dayDisplayedName];
+    [self.navigationItem.rightBarButtonItem setAction:@selector(editButtonPressed:)];
+    [self.navigationItem.rightBarButtonItem setTarget:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
