@@ -13,10 +13,6 @@
 #define isWeekend ([self dateOfToday] == 1 || [self dateOfToday] == 7)
 #define isUpper ([[[NSUserDefaults standardUserDefaults]objectForKey:@"userTypeSchoolSection"]integerValue] == kUserTypeSchoolSectionUpper)
 
-#define kAlertTagUpdateReminder 21
-#define kAleatTagYoutube 19
-
-
 @interface MainController ()
 
 @property (strong, nonatomic) NSDictionary *scheduleData;

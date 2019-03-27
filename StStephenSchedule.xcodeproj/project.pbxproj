@@ -9,12 +9,8 @@
 /* Begin PBXBuildFile section */
 		071E4CB115BD6906008A9457 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 071E4CB015BD6906008A9457 /* MainController.m */; };
 		075C2D651A98F4BC0053A62C /* sstxClasses_upper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */; };
-		076696F022489BED0070D6B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076696EF22489BED0070D6B1 /* QuartzCore.framework */; };
 		07A6D5771FAE589B006F36FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A6D5761FAE589B006F36FB /* LaunchScreen.storyboard */; };
 		07AF1EF01594EF3F0018E9CE /* emptyUserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07AF1EEF1594EF3F0018E9CE /* emptyUserData.plist */; };
-		07D438551594BEFD0022BC05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D438541594BEFD0022BC05 /* UIKit.framework */; };
-		07D438571594BEFD0022BC05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D438561594BEFD0022BC05 /* Foundation.framework */; };
-		07D438591594BEFD0022BC05 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D438581594BEFD0022BC05 /* CoreGraphics.framework */; };
 		07D438611594BEFD0022BC05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D438601594BEFD0022BC05 /* main.m */; };
 		07D438651594BEFD0022BC05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D438641594BEFD0022BC05 /* AppDelegate.m */; };
 		07D438681594BEFD0022BC05 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D438661594BEFD0022BC05 /* MainStoryboard.storyboard */; };
@@ -28,19 +24,17 @@
 		07EE629016586E43002E5A73 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EE628F16586E43002E5A73 /* SettingView.m */; };
 		07EE6293165877E9002E5A73 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EE6292165877E9002E5A73 /* UsersViewController.m */; };
 		07F76DB31A1AF69600398DB2 /* sstxClasses_middle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07F76DB11A1AF69600398DB2 /* sstxClasses_middle.plist */; };
+		C9DDD16B224C305200EE0416 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D438541594BEFD0022BC05 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		071E4CAF15BD6906008A9457 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		071E4CB015BD6906008A9457 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sstxClasses_upper.plist; sourceTree = "<group>"; };
-		076696EF22489BED0070D6B1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		07A6D5761FAE589B006F36FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07AF1EEF1594EF3F0018E9CE /* emptyUserData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emptyUserData.plist; sourceTree = "<group>"; };
 		07D438501594BEFD0022BC05 /* StStephenSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StStephenSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D438541594BEFD0022BC05 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		07D438561594BEFD0022BC05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		07D438581594BEFD0022BC05 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		07D4385C1594BEFD0022BC05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07D438601594BEFD0022BC05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		07D438621594BEFD0022BC05 /* StStephenSchedule-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StStephenSchedule-Prefix.pch"; sourceTree = "<group>"; };
@@ -68,10 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				076696F022489BED0070D6B1 /* QuartzCore.framework in Frameworks */,
-				07D438571594BEFD0022BC05 /* Foundation.framework in Frameworks */,
-				07D438591594BEFD0022BC05 /* CoreGraphics.framework in Frameworks */,
-				07D438551594BEFD0022BC05 /* UIKit.framework in Frameworks */,
+				C9DDD16B224C305200EE0416 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,10 +126,7 @@
 		07D438531594BEFD0022BC05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				076696EF22489BED0070D6B1 /* QuartzCore.framework */,
 				07D438541594BEFD0022BC05 /* UIKit.framework */,
-				07D438561594BEFD0022BC05 /* Foundation.framework */,
-				07D438581594BEFD0022BC05 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
