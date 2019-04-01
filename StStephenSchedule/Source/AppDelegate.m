@@ -12,13 +12,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:kUserTypeSchoolSectionUpper],kUserDefaultsKeyUserTypeSchoolSection,nil]];
-    [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:kUserTypePersonStudent],kUserDefaultsKeyUserTypePerson,nil]];
-    [[NSUserDefaults standardUserDefaults]registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:@"Me",kUserDefaultsKeyUserName, nil]];
-    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{kDisplayingUserNameKey: kDefaultUserName}];
     [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
-
 }
 
 @end

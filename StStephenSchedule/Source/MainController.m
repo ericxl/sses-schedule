@@ -9,18 +9,160 @@
 #import "MainController.h"
 
 #import "SettingView.h"
-
-#define isWeekend ([self dateOfToday] == 1 || [self dateOfToday] == 7)
-#define isUpper ([[[NSUserDefaults standardUserDefaults]objectForKey:@"userTypeSchoolSection"]integerValue] == kUserTypeSchoolSectionUpper)
+#import "SSSSchedule.h"
+#import "ClassPickerController.h"
 
 @interface MainController ()
 
-@property (strong, nonatomic) NSDictionary *scheduleData;
-@property (strong, nonatomic) NSDictionary *displayedSchedule;
+@property (strong, nonatomic) SSSSchedule *displayingSchedule;
+@property (strong, nonatomic) SSSSchedule *editingSchedule;
+@property (strong, nonatomic) NSString *displayingDay;
 
 @end
 
 @implementation MainController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.displayingSchedule = [self loadSchedule];
+    self.editingSchedule = [self loadSchedule];
+    
+    self.displayingDay = @"A";
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        NSString *dayString = [self getLetterDayFromApache];
+        if (dayString != nil)
+        {
+            self.displayingDay = dayString;
+            __weak MainController *welf = self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                for (id object in self.letterButtons) {
+                    UIButton * button = (UIButton *)object;
+                    if ([button.titleLabel.text isEqualToString:dayString]){
+                        button.titleLabel.textColor = [UIColor yellowColor];
+                        [button setTitleColor: [UIColor yellowColor] forState:UIControlStateNormal];
+                    }
+                    [[welf myTableView] reloadData];
+                }
+                [welf setTitle:[NSString stringWithFormat:@"%@ day", self.displayingDay]];
+            });
+        }
+    });
+    
+    self.title = [NSString stringWithFormat:@"%@ day", self.displayingDay];
+    [self updateNavBar:NO];
+    self.myTableView.allowsSelectionDuringEditing = YES;
+    self.myTableView.allowsSelection = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.editingClass != nil && self.shouldSave)
+    {
+        NSString *cp = [self classPeriodFromIndexPath:self.editedIndexPath];
+        if (self.editingIsAll)
+        {
+            [self.editingSchedule setClass:self.editingClass forAllClassPeriod:cp];
+        }
+        else
+        {
+            [self.editingSchedule setClass:self.editingClass forClassPeriod:cp];
+        }
+        [self.myTableView reloadData];
+    }
+    self.editingClass = nil;
+}
+
+#pragma mark - Table View delegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 8;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"ScheduleCellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    SSSSchedule *displayedSchedule = tableView.isEditing ? self.editingSchedule : self.displayingSchedule;
+    NSLog(@"isEditing%@", [tableView isEditing] ? @"YES":  @"NO");
+    NSString *selectedClassPeriod = [self classPeriodFromIndexPath:indexPath];
+    SSSClass *currentClass = [displayedSchedule getClassWithClassPeriod:selectedClassPeriod];
+
+    UILabel *periodLabel=(UILabel *)[cell viewWithTag:1];
+    UILabel *classNameLabel=(UILabel *)[cell viewWithTag:2];
+    UILabel *teacherNameLabel=(UILabel *)[cell viewWithTag:3];
+    UILabel *locationNameLabel=(UILabel *)[cell viewWithTag:4];
+    periodLabel.text = [NSString stringWithFormat:@"%ld", ([indexPath row] + 1)];
+    classNameLabel.text = currentClass.name;
+    teacherNameLabel.text = currentClass.teacher;
+    locationNameLabel.text = currentClass.location;
+
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.myTableView.frame.size.height / [self tableView:self.myTableView numberOfRowsInSection:0];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ClassPickerController *destination = [self.storyboard instantiateViewControllerWithIdentifier:@"ClassPickerID"];
+    if ([destination respondsToSelector:@selector(setDelegate:)]) {
+        [destination setValue:self forKey:@"delegate"];
+    }
+    
+    self.editedIndexPath = indexPath;
+    NSString *selectedClassPeriod = [self classPeriodFromIndexPath:indexPath];
+    [destination setEditingClass:[self.displayingSchedule getClassWithClassPeriod:selectedClassPeriod]];
+    [destination setEditingSchedule:self.displayingSchedule];
+    [destination setEditingPeriod:selectedClassPeriod];
+    [destination setDelegate:self];
+
+    [self.navigationController pushViewController:destination animated:YES];
+    [self.myTableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Helpers
+
+- (NSString *)userFilePath
+{
+    NSString *currentUser = [[NSUserDefaults standardUserDefaults]objectForKey:kDisplayingUserNameKey];
+    return [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_schedule", currentUser]];
+}
+
+- (SSSSchedule *)loadSchedule
+{
+    NSString *usersFilePath = [self userFilePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:usersFilePath]) {
+        NSData *scheduleData = [NSData dataWithContentsOfFile:usersFilePath];
+        return [NSKeyedUnarchiver unarchiveObjectWithData:scheduleData];
+    }
+    else
+    {
+        SSSSchedule *newSchedule = [[SSSSchedule alloc] initWithHighSchool:YES];
+        [self saveSchedule:newSchedule];
+        return newSchedule;
+    }
+}
+
+- (void)saveSchedule:(SSSSchedule *)schedule
+{
+    [NSKeyedArchiver archiveRootObject:schedule toFile:[self userFilePath]];
+}
+
+- (NSString *)classPeriodFromIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger period = [indexPath row] + 1;
+    return [NSString stringWithFormat:@"%@%ld", self.displayingDay, period];
+}
 
 -(NSString * )getLetterDayFromApache {
     NSURL *url = [NSURL URLWithString:LETTER_DAY_URL];
@@ -39,229 +181,48 @@
     return result;
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSString *dayString=[self getLetterDayFromApache];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (dayString!=nil) {
-                self.dayDisplayedName=dayString;
-                self.displayedSchedule=[self.scheduleData objectForKey:dayString];
-                for (id object in self.letterButtons) {
-                    UIButton * button = (UIButton *)object;
-                    if ([button.titleLabel.text isEqualToString:dayString]){
-                        button.titleLabel.textColor = [UIColor yellowColor];
-                        [button setTitleColor: [UIColor yellowColor] forState:UIControlStateNormal];
-                    }
-                }
-            }
-        });
-    });
-    self.displayedSchedule = [self.scheduleData objectForKey:self.dayDisplayedName];
-}
-
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    //load user data
-    
-    NSString *filePath = PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME);
-    if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
-        self.scheduleData=[[[NSDictionary alloc]initWithContentsOfFile:filePath]objectForKey:kUserDataKeyUserSchedule];
-    }
-    else {
-        if ([[NSFileManager defaultManager]fileExistsAtPath:PATH_FOR_FILE_IN_DOCUMENT_DOMAIN(kPrimeUserDataFileName)]) {
-            self.scheduleData = [[NSDictionary alloc]initWithContentsOfFile:PATH_FOR_FILE_IN_DOCUMENT_DOMAIN(kPrimeUserDataFileName)];
-            NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:SCHOOL_SECTION],kUserDataKeyUserSchoolSection,[NSNumber numberWithInteger:PERSON_TYPE],kUserDataKeyUserPersonType,CURRENT_USER_NAME,kUserDataKeyUserName,self.scheduleData,kUserDataKeyUserSchedule, nil];
-            [dictionary writeToFile:filePath atomically:YES];
-            NSError *error = nil;
-            [[NSFileManager defaultManager]removeItemAtPath:PATH_FOR_FILE_IN_DOCUMENT_DOMAIN(kPrimeUserDataFileName) error:&error];
-        }
-        else {
-            self.scheduleData=[NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"emptyUserData" withExtension:@"plist"]];
-            NSDictionary *dictionary = GENERATE_USER_DATA_DICTIONARY(self.scheduleData, CURRENT_USER_NAME, SCHOOL_SECTION, PERSON_TYPE);
-            [dictionary writeToFile:filePath atomically:YES];
-        }
-
-    }
-
-    [self setDayDisplayedName:@"A"];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSString *dayString=[self getLetterDayFromApache];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (dayString!=nil) {
-                self.dayDisplayedName = dayString;
-                self.displayedSchedule = [self.scheduleData objectForKey:dayString];
-                for (id object in self.letterButtons) {
-                    UIButton * button = (UIButton *)object;
-                    if ([button.titleLabel.text isEqualToString:dayString]){
-                        button.titleLabel.textColor = [UIColor yellowColor];
-                        [button setTitleColor: [UIColor yellowColor] forState:UIControlStateNormal];
-                    }
-                }
-            }
-        });
-    });
-    self.displayedSchedule = [self.scheduleData objectForKey:self.dayDisplayedName];
-    [self.navigationItem.rightBarButtonItem setAction:@selector(editButtonPressed:)];
-    [self.navigationItem.rightBarButtonItem setTarget:self];
-    
-    [self.navigationItem.leftBarButtonItem setAction:@selector(settingsButtonClicked)];
-    [self.navigationItem.leftBarButtonItem setTarget:self];
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
-    [super viewDidAppear:animated];
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [self reloadUserData];
-    self.displayedSchedule = [self.scheduleData objectForKey:self.dayDisplayedName];
+-(IBAction)dayButtonPressed:(UIButton *)sender {
+    self.displayingDay = [NSString stringWithFormat:@"%C", [@"_ABCDEFG" characterAtIndex:sender.tag]];
+    self.title = [NSString stringWithFormat:@"%@ day", self.displayingDay];
     [self.myTableView reloadData];
-    
-    if ([CURRENT_USER_NAME isEqualToString:@"Me"]) {
-        self.title=[NSString stringWithFormat:NSLocalizedString(@"My %@ Day", nil), self.dayDisplayedName];
-    }
-    else {
-        self.title=[NSString stringWithFormat:@"%@'s %@ Day",CURRENT_USER_NAME, self.dayDisplayedName];
-    }
-    [super viewWillAppear:animated];
-    
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)updateNavBar:(BOOL)editing
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: editing ? UIBarButtonSystemItemCancel : UIBarButtonSystemItemAdd target:self action: editing ? @selector(handleCancel) : @selector(handleSettings)];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:editing ? UIBarButtonSystemItemOrganize : UIBarButtonSystemItemCompose target:self action: editing ? @selector(handleSave) : @selector(handleEdit)];
+    [left setTintColor:[UIColor whiteColor]];
+    [right setTintColor:[UIColor whiteColor]];
+
+    self.navigationItem.leftBarButtonItem = left;
+    self.navigationItem.rightBarButtonItem = right;
 }
 
+- (void)handleEdit{
+    [self.myTableView setEditing:YES animated:YES];
+    [self.myTableView reloadData];
+    [self updateNavBar:YES];
+}
 
--(void)settingsButtonClicked {
+- (void)handleSettings {
     SettingView *settingView = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
-    
     [self.navigationController pushViewController:settingView animated:YES];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
+- (void)handleCancel{
+    [self updateNavBar:NO];
+    self.editingSchedule = [self loadSchedule];
+    [self.myTableView setEditing:NO animated:YES];
+    [self.myTableView reloadData];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return 8;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"ScheduleCellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
-    NSInteger row=[indexPath row]+1;
-    NSString *periodnumber=[NSString stringWithFormat:@"%ldth",(long)row];
-    if (row==1) {
-        periodnumber=[NSString stringWithFormat:@"%ldst",(long)row];
-    }
-    if (row==2) {
-        periodnumber=[NSString stringWithFormat:@"%ldnd",(long)row];
-    }
-    if (row==3) {
-        periodnumber=[NSString stringWithFormat:@"%ldrd",(long)row];
-    }
-    
-    NSString *periodNumberString=[NSString stringWithFormat:@"%ld",(long)row];
-    NSDictionary *dict=[self.displayedSchedule objectForKey:periodNumberString];
-    
-    UILabel *periodLabel=(UILabel *)[cell viewWithTag:1];
-    UILabel *classNameLabel=(UILabel *)[cell viewWithTag:2];
-    UILabel *teacherNameLabel=(UILabel *)[cell viewWithTag:3];
-    UILabel *locationNameLabel=(UILabel *)[cell viewWithTag:4];
-    periodLabel.text=periodnumber;
-    classNameLabel.text=[dict objectForKey:@"className"];
-    teacherNameLabel.text=[dict objectForKey:@"teacherName"];
-    locationNameLabel.text=[dict objectForKey:@"locationName"];
-    
-    if ([classNameLabel.text isEqualToString:@"OFF"]) {
-        classNameLabel.textColor=[UIColor lightGrayColor];
-        teacherNameLabel.text=@"";
-        locationNameLabel.text=@"";
-    }
-    else {
-        classNameLabel.textColor=[UIColor blackColor];
-    }
-    
-    return cell;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.myTableView.frame.size.height / [self tableView:self.myTableView numberOfRowsInSection:0];
-}
-
--(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
-}
-
--(void)reloadUserData {
-    NSString *filePath = PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME);
-    if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
-        self.scheduleData=[[[NSDictionary alloc]initWithContentsOfFile:filePath]objectForKey:kUserDataKeyUserSchedule];
-    }
-}
-
--(void)setDayDisplayedName:(NSString *)aName {
-    if (![aName isEqual:self.dayDisplayedName]) {
-        _dayDisplayedName = aName;
-        if ([CURRENT_USER_NAME isEqualToString:@"Me"]) {
-            self.title=[NSString stringWithFormat:NSLocalizedString(@"My %@ Day", nil), self.dayDisplayedName];
-        }
-        else {
-            self.title=[NSString stringWithFormat:@"%@'s %@ Day",CURRENT_USER_NAME,self.dayDisplayedName];
-        }
-        self.displayedSchedule=[self.scheduleData objectForKey:aName];
-        [self.myTableView reloadData];
-    }
-}
-
-#pragma mark - Table view delegate
-
--(IBAction)editButtonPressed:(UIButton *)sender{
-    EditScheduleController *editScheduleController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditScheduleControllerID"];
-    [editScheduleController setValue:self forKey:@"delegate"];
-    [editScheduleController setValue: self.dayDisplayedName forKey:@"editingDayDisplayedName"];
-    [self.navigationController pushViewController:editScheduleController animated:YES];
-}
-
--(IBAction)dayButtonPressed:(UIButton *)sender {
-    NSString *day;
-    switch (sender.tag) {
-        case 1:
-            day=@"A";
-            break;
-        case 2:
-            day=@"B";
-            break;
-        case 3:
-            day=@"C";
-            break;
-        case 4:
-            day=@"D";
-            break;
-        case 5:
-            day=@"E";
-            break;
-        case 6:
-            day=@"F";
-            break;
-        case 7:
-            day=@"G";
-            break;
-    }
-    self.dayDisplayedName=day;
+- (void)handleSave {
+    [self updateNavBar:NO];
+    [self saveSchedule:self.editingSchedule];
+    self.displayingSchedule = [self loadSchedule];
+    self.editingSchedule = [self loadSchedule];
+    [self.myTableView setEditing:NO animated:YES];
+    [self.myTableView reloadData];
 }
 
 @end

@@ -40,21 +40,21 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
      
     self.navigationItem.title = NSLocalizedString(@"Users", nil);
-    
-    NSString *filePath = PATH_FOR_FILE_IN_DOCUMENT_DOMAIN(kUsersNamesManagerFileName);
-    if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
-        self.users = [NSMutableArray arrayWithContentsOfFile:filePath];
-    }
-    else {
-        NSArray *array = [NSArray arrayWithObject:CURRENT_USER_NAME];
-        [array writeToFile:filePath atomically:YES];
-        self.users = [NSMutableArray arrayWithArray:array];
-    }
-    
-    NSUInteger lastUserOrder = [[NSArray arrayWithContentsOfFile:filePath]indexOfObject:GET_USER_DEFAULT(kUserDefaultsKeyUserName)];
-    self.lastIndexPath = [NSIndexPath indexPathForRow:lastUserOrder inSection:kSettingsTableViewSectionUsers];
-    
-    
+//
+//    NSString *filePath = PATH_FOR_FILE_IN_DOCUMENT_DOMAIN(kUsersNamesManagerFileName);
+//    if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
+//        self.users = [NSMutableArray arrayWithContentsOfFile:filePath];
+//    }
+//    else {
+//        NSArray *array = [NSArray arrayWithObject:CURRENT_USER_NAME];
+//        [array writeToFile:filePath atomically:YES];
+//        self.users = [NSMutableArray arrayWithArray:array];
+//    }
+//
+//    NSUInteger lastUserOrder = [[NSArray arrayWithContentsOfFile:filePath]indexOfObject:GET_USER_DEFAULT(kUserDefaultsKeyUserName)];
+//    self.lastIndexPath = [NSIndexPath indexPathForRow:lastUserOrder inSection:kSettingsTableViewSectionUsers];
+//
+//
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -116,9 +116,9 @@
             [[NSFileManager defaultManager]removeItemAtPath:PATH_FOR_DATA_OF_USER([tableView cellForRowAtIndexPath:indexPath].textLabel.text) error:&error];
             // delete the row from the data source
             if ([tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
-                SET_USER_DEFAULT([self.users objectAtIndex:0], kUserDefaultsKeyUserName);
-                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserPersonType], kUserDefaultsKeyUserTypePerson);
-                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserSchoolSection], kUserDefaultsKeyUserTypeSchoolSection);
+//                SET_USER_DEFAULT([self.users objectAtIndex:0], kUserDefaultsKeyUserName);
+//                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserPersonType], kUserDefaultsKeyUserTypePerson);
+//                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserSchoolSection], kUserDefaultsKeyUserTypeSchoolSection);
                 self.lastIndexPath = [NSIndexPath indexPathForRow:0 inSection:kSettingsTableViewSectionUsers];
             }
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
@@ -251,16 +251,16 @@
                     [[NSFileManager defaultManager]removeItemAtPath:PATH_FOR_DATA_OF_USER(name) error:&error];
                 }
                 
-                NSDictionary *dict = GENERATE_USER_DATA_DICTIONARY([NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"emptyUserData" withExtension:@"plist"]], @"Me",  kUserTypeSchoolSectionUpper, kUserTypePersonStudent);
-                SET_USER_DEFAULT(@"Me", kUserDefaultsKeyUserName);
-                NSString *filePath = PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME);
-                if (![[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
-                    [dict writeToFile:filePath atomically:YES];
-                }
-                
-                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserPersonType], kUserDefaultsKeyUserTypePerson);
-                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserSchoolSection], kUserDefaultsKeyUserTypeSchoolSection);
-                
+//                NSDictionary *dict = GENERATE_USER_DATA_DICTIONARY([NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"emptyUserData" withExtension:@"plist"]], @"Me",  kUserTypeSchoolSectionUpper, kUserTypePersonStudent);
+//                SET_USER_DEFAULT(@"Me", kUserDefaultsKeyUserName);
+//                NSString *filePath = PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME);
+//                if (![[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
+//                    [dict writeToFile:filePath atomically:YES];
+//                }
+//
+//                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserPersonType], kUserDefaultsKeyUserTypePerson);
+//                SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserSchoolSection], kUserDefaultsKeyUserTypeSchoolSection);
+//
                 NSMutableArray *indexPathes = [NSMutableArray array];
                 for (int i = 1; i<[[self users]count]; i++) {
                     NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection: kSettingsTableViewSectionUsers];
@@ -292,9 +292,9 @@
             UITableViewCell *oldCell = [tableView cellForRowAtIndexPath: self.lastIndexPath];
             oldCell.accessoryType = UITableViewCellAccessoryNone;
             self.lastIndexPath = indexPath;
-            SET_USER_DEFAULT([self.users objectAtIndex:[indexPath row]], kUserDefaultsKeyUserName);
-            SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserPersonType], kUserDefaultsKeyUserTypePerson);
-            SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserSchoolSection], kUserDefaultsKeyUserTypeSchoolSection);
+//            SET_USER_DEFAULT([self.users objectAtIndex:[indexPath row]], kUserDefaultsKeyUserName);
+//            SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserPersonType], kUserDefaultsKeyUserTypePerson);
+//            SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserSchoolSection], kUserDefaultsKeyUserTypeSchoolSection);
         }
     }
     else if ([indexPath section] == kSettingsTableViewSectionUsers && [indexPath row] == [self.users count] ) {

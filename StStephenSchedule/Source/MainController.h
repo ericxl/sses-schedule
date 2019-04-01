@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "EditScheduleController.h"
+@class SSSClass;
 
 @interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate, UINavigationControllerDelegate>
 
@@ -16,9 +16,11 @@
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *letterButtons;
 
-@property (strong, nonatomic) NSString *dayDisplayedName;
-
 -(IBAction)dayButtonPressed:(UIButton *)sender;
--(IBAction)editButtonPressed:(UIButton *)sender;
+
+@property (strong, nonatomic) SSSClass *editingClass;
+@property (assign, nonatomic) BOOL editingIsAll;
+@property (assign, nonatomic) BOOL shouldSave;
+@property (strong, nonatomic) NSIndexPath *editedIndexPath;
 
 @end

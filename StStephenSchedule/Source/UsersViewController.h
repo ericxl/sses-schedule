@@ -21,5 +21,4 @@
 - (IBAction)viewTouched:(UIControl *)sender;
 
 - (IBAction)userTypeSegmentValueChanged:(id)sender;
-- (IBAction)personTypeSegmentValueChanged:(UISegmentedControl *)sender;
 @end

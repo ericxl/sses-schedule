@@ -11,9 +11,21 @@
 
 //User default keys
 
+#define kDisplayingUserNameKey @"kDisplayingUserNameKey"
+#define kDefaultUserName @"DEFAULT_USER"
+
+
+
+
+
+
+
+
+
+
+
 #define kUserDefaultsKeyUserTypeSchoolSection @"userTypeSchoolSection"
 #define kUserDefaultsKeyUserTypePerson @"userTypePerson"
-#define kUserDefaultsKeyUserName @"userName"
 
 //IAPs
 #define kUserDefaultsKeyMUIAPEnabled @"STXIDSerialID"
@@ -30,8 +42,6 @@
 
 #define kUserTypeSchoolSectionUpper 0
 #define kUserTypeSchoolSectionMiddle 1
-#define kUserTypePersonStudent 0
-#define kUserTypePersonTeacher 1
 
 #define kSettingsUsersPassedDataUserName @"userName"
 #define kSettingsUsersPassedDataSchoolSection @"userSchoolSection"
@@ -54,7 +64,6 @@
 
 #define kUserDataKeyUserName @"userName"
 #define kUserDataKeyUserSchoolSection @"userSchoolSection"
-#define kUserDataKeyUserPersonType @"userPersonType"
 #define kUserDataKeyUserSchedule @"userSchedule"
 
 #define SET_USER_DEFAULT(__VALUE__,__KEY__) [[NSUserDefaults standardUserDefaults] setObject:__VALUE__ forKey:__KEY__];

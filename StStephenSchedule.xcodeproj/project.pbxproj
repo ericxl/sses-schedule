@@ -10,20 +10,16 @@
 		071E4CB115BD6906008A9457 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 071E4CB015BD6906008A9457 /* MainController.m */; };
 		075C2D651A98F4BC0053A62C /* sstxClasses_upper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */; };
 		07A6D5771FAE589B006F36FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A6D5761FAE589B006F36FB /* LaunchScreen.storyboard */; };
-		07AF1EF01594EF3F0018E9CE /* emptyUserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07AF1EEF1594EF3F0018E9CE /* emptyUserData.plist */; };
 		07D438611594BEFD0022BC05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D438601594BEFD0022BC05 /* main.m */; };
 		07D438651594BEFD0022BC05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D438641594BEFD0022BC05 /* AppDelegate.m */; };
 		07D438681594BEFD0022BC05 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D438661594BEFD0022BC05 /* MainStoryboard.storyboard */; };
 		07D438771594BF490022BC05 /* ClassPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D438761594BF490022BC05 /* ClassPickerController.m */; };
-		07D438821594C2DD0022BC05 /* EditScheduleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D438811594C2DD0022BC05 /* EditScheduleController.m */; };
-		07DD4CCF16597AEB005E3837 /* identifyClassID_middle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07DD4CCD16597AEB005E3837 /* identifyClassID_middle.plist */; };
-		07DD4CD016597AEB005E3837 /* identifyClassID_upper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07DD4CCE16597AEB005E3837 /* identifyClassID_upper.plist */; };
-		07DD4CD416597BA6005E3837 /* classNeededChanges_middle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07DD4CD216597BA6005E3837 /* classNeededChanges_middle.plist */; };
-		07DD4CD516597BA6005E3837 /* classNeededChanges_upper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07DD4CD316597BA6005E3837 /* classNeededChanges_upper.plist */; };
 		07EB174317F3E8100021E3FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07EB174217F3E8100021E3FC /* Images.xcassets */; };
 		07EE629016586E43002E5A73 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EE628F16586E43002E5A73 /* SettingView.m */; };
 		07EE6293165877E9002E5A73 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EE6292165877E9002E5A73 /* UsersViewController.m */; };
 		07F76DB31A1AF69600398DB2 /* sstxClasses_middle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07F76DB11A1AF69600398DB2 /* sstxClasses_middle.plist */; };
+		C9174CC622519F6C002562F9 /* SSSClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C9174CC522519F6C002562F9 /* SSSClass.m */; };
+		C9174CC92251A1D4002562F9 /* SSSSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = C9174CC82251A1D4002562F9 /* SSSSchedule.m */; };
 		C9DDD16B224C305200EE0416 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D438541594BEFD0022BC05 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +28,6 @@
 		071E4CB015BD6906008A9457 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sstxClasses_upper.plist; sourceTree = "<group>"; };
 		07A6D5761FAE589B006F36FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		07AF1EEF1594EF3F0018E9CE /* emptyUserData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emptyUserData.plist; sourceTree = "<group>"; };
 		07D438501594BEFD0022BC05 /* StStephenSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StStephenSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D438541594BEFD0022BC05 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		07D4385C1594BEFD0022BC05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,18 +38,16 @@
 		07D438671594BEFD0022BC05 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		07D438751594BF490022BC05 /* ClassPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassPickerController.h; sourceTree = "<group>"; };
 		07D438761594BF490022BC05 /* ClassPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassPickerController.m; sourceTree = "<group>"; };
-		07D438801594C2DD0022BC05 /* EditScheduleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditScheduleController.h; sourceTree = "<group>"; };
-		07D438811594C2DD0022BC05 /* EditScheduleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditScheduleController.m; sourceTree = "<group>"; };
-		07DD4CCD16597AEB005E3837 /* identifyClassID_middle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = identifyClassID_middle.plist; sourceTree = "<group>"; };
-		07DD4CCE16597AEB005E3837 /* identifyClassID_upper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = identifyClassID_upper.plist; sourceTree = "<group>"; };
-		07DD4CD216597BA6005E3837 /* classNeededChanges_middle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = classNeededChanges_middle.plist; sourceTree = "<group>"; };
-		07DD4CD316597BA6005E3837 /* classNeededChanges_upper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = classNeededChanges_upper.plist; sourceTree = "<group>"; };
 		07EB174217F3E8100021E3FC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		07EE628E16586E43002E5A73 /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
 		07EE628F16586E43002E5A73 /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
 		07EE6291165877E9002E5A73 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
 		07EE6292165877E9002E5A73 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
 		07F76DB11A1AF69600398DB2 /* sstxClasses_middle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sstxClasses_middle.plist; sourceTree = "<group>"; };
+		C9174CC422519F6C002562F9 /* SSSClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSSClass.h; sourceTree = "<group>"; };
+		C9174CC522519F6C002562F9 /* SSSClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSSClass.m; sourceTree = "<group>"; };
+		C9174CC72251A1D4002562F9 /* SSSSchedule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSSSchedule.h; sourceTree = "<group>"; };
+		C9174CC82251A1D4002562F9 /* SSSSchedule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSSSchedule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +69,6 @@
 				07D438641594BEFD0022BC05 /* AppDelegate.m */,
 				071E4CAF15BD6906008A9457 /* MainController.h */,
 				071E4CB015BD6906008A9457 /* MainController.m */,
-				07D438801594C2DD0022BC05 /* EditScheduleController.h */,
-				07D438811594C2DD0022BC05 /* EditScheduleController.m */,
 				07D438751594BF490022BC05 /* ClassPickerController.h */,
 				07D438761594BF490022BC05 /* ClassPickerController.m */,
 				07EE628E16586E43002E5A73 /* SettingView.h */,
@@ -85,6 +76,10 @@
 				07EE6291165877E9002E5A73 /* UsersViewController.h */,
 				07EE6292165877E9002E5A73 /* UsersViewController.m */,
 				07D438601594BEFD0022BC05 /* main.m */,
+				C9174CC422519F6C002562F9 /* SSSClass.h */,
+				C9174CC522519F6C002562F9 /* SSSClass.m */,
+				C9174CC72251A1D4002562F9 /* SSSSchedule.h */,
+				C9174CC82251A1D4002562F9 /* SSSSchedule.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -95,11 +90,6 @@
 				07EB174217F3E8100021E3FC /* Images.xcassets */,
 				075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */,
 				07F76DB11A1AF69600398DB2 /* sstxClasses_middle.plist */,
-				07DD4CD216597BA6005E3837 /* classNeededChanges_middle.plist */,
-				07DD4CD316597BA6005E3837 /* classNeededChanges_upper.plist */,
-				07DD4CCD16597AEB005E3837 /* identifyClassID_middle.plist */,
-				07DD4CCE16597AEB005E3837 /* identifyClassID_upper.plist */,
-				07AF1EEF1594EF3F0018E9CE /* emptyUserData.plist */,
 				07A6D5761FAE589B006F36FB /* LaunchScreen.storyboard */,
 				07D438661594BEFD0022BC05 /* MainStoryboard.storyboard */,
 			);
@@ -209,14 +199,9 @@
 			files = (
 				075C2D651A98F4BC0053A62C /* sstxClasses_upper.plist in Resources */,
 				07D438681594BEFD0022BC05 /* MainStoryboard.storyboard in Resources */,
-				07AF1EF01594EF3F0018E9CE /* emptyUserData.plist in Resources */,
 				07EB174317F3E8100021E3FC /* Images.xcassets in Resources */,
 				07A6D5771FAE589B006F36FB /* LaunchScreen.storyboard in Resources */,
 				07F76DB31A1AF69600398DB2 /* sstxClasses_middle.plist in Resources */,
-				07DD4CCF16597AEB005E3837 /* identifyClassID_middle.plist in Resources */,
-				07DD4CD016597AEB005E3837 /* identifyClassID_upper.plist in Resources */,
-				07DD4CD416597BA6005E3837 /* classNeededChanges_middle.plist in Resources */,
-				07DD4CD516597BA6005E3837 /* classNeededChanges_upper.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +215,8 @@
 				07D438611594BEFD0022BC05 /* main.m in Sources */,
 				07D438651594BEFD0022BC05 /* AppDelegate.m in Sources */,
 				07D438771594BF490022BC05 /* ClassPickerController.m in Sources */,
-				07D438821594C2DD0022BC05 /* EditScheduleController.m in Sources */,
+				C9174CC92251A1D4002562F9 /* SSSSchedule.m in Sources */,
+				C9174CC622519F6C002562F9 /* SSSClass.m in Sources */,
 				071E4CB115BD6906008A9457 /* MainController.m in Sources */,
 				07EE629016586E43002E5A73 /* SettingView.m in Sources */,
 				07EE6293165877E9002E5A73 /* UsersViewController.m in Sources */,

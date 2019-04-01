@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SSSClass.h"
 
-#import "EditScheduleController.h"
+@class SSSSchedule;
+
 @interface ClassPickerController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIPickerView *classesPicker;
@@ -16,12 +18,13 @@
 @property (strong, nonatomic) IBOutlet UITextField *locationTextField;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (strong, nonatomic) NSDictionary *classesData;
-@property (strong, nonatomic) NSArray *classCategory;
+
 @property (strong, nonatomic) NSArray *specifiedClasses;
 
-@property (weak, nonatomic)id delegate;
-@property (strong, nonatomic) NSDictionary *selectedData;
+@property (nonatomic, weak) id delegate;
+@property (nonatomic, strong) SSSClass *editingClass;
+@property (nonatomic, strong) SSSSchedule *editingSchedule;
+@property (nonatomic, strong) NSString *editingPeriod;
 
 
 @property (nonatomic) CGRect locationFrame;

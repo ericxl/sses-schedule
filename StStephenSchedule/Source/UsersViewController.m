@@ -21,8 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
+    
     UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goback)];
     [customBarItem setTintColor:[UIColor whiteColor]];
     self.navigationItem.leftBarButtonItem = customBarItem;
@@ -37,28 +36,6 @@
     [self.userTypeSegment setTitle:NSLocalizedString(@"Middle", nil) forSegmentAtIndex:1];
     [self.personTypeSegment setTitle:NSLocalizedString(@"Student", nil) forSegmentAtIndex:0];
     [self.personTypeSegment setTitle:NSLocalizedString(@"Teacher", nil) forSegmentAtIndex:1];
-
-    
-    if ([[self.passedData objectForKey:kSettingsUsersPassedDataUserName] isEqualToString:@""]) {
-        NSDictionary *dict = GENERATE_USER_DATA_DICTIONARY([NSDictionary dictionaryWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"emptyUserData" withExtension:@"plist"]], @"",  kUserTypeSchoolSectionUpper, kUserTypePersonStudent);
-        self.userDataBuffer = [NSMutableDictionary dictionaryWithDictionary:dict];
-    }
-    else {
-        self.userDataBuffer = [NSMutableDictionary dictionaryWithContentsOfFile:PATH_FOR_DATA_OF_USER([self.passedData objectForKey:kSettingsUsersPassedDataUserName])];
-    }
-    
-    self.userTypeSegment.selectedSegmentIndex = [[self.userDataBuffer objectForKey:kUserDataKeyUserSchoolSection]integerValue];
-    self.personTypeSegment .selectedSegmentIndex = [[self.userDataBuffer objectForKey:kUserDataKeyUserPersonType]integerValue];
-    self.userNameTextField.text = [self.passedData objectForKey:kSettingsUsersPassedDataUserName];
-    
-    if ([self.userNameTextField.text isEqualToString:@""]) {
-        [self.userNameTextField becomeFirstResponder];
-    }
-    self.userNameHolder = [self.passedData objectForKey:kSettingsUsersPassedDataUserName];
-    
- 
-    
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,12 +91,6 @@
             NSString *filePath = PATH_FOR_DATA_OF_USER(self.userNameTextField.text);
             [self.userDataBuffer writeToFile:filePath atomically:YES];
         }
-        
-        if ([[self.passedData objectForKey:kSettingsUsersPassedDataIsCurrentUser] boolValue]) {
-            SET_USER_DEFAULT(self.userNameTextField.text, kUserDefaultsKeyUserName);
-            SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserPersonType], kUserDefaultsKeyUserTypePerson);
-            SET_USER_DEFAULT([[NSDictionary dictionaryWithContentsOfFile: PATH_FOR_DATA_OF_USER(CURRENT_USER_NAME)]objectForKey:kUserDataKeyUserSchoolSection], kUserDefaultsKeyUserTypeSchoolSection);
-        }
     }
     self.userNameHolder = nil;
     [self.navigationController popViewControllerAnimated:YES];
@@ -172,14 +143,11 @@
     }
 }
 
-- (IBAction)personTypeSegmentValueChanged:(UISegmentedControl *)sender {
-    [self.userDataBuffer setObject:[NSNumber numberWithInteger:sender.selectedSegmentIndex] forKey:kUserDataKeyUserPersonType];
-}
-
 -(void)switchSegment: (UISegmentedControl *)sender{
     if (sender.selectedSegmentIndex == 0) {
         sender.selectedSegmentIndex = 1;
     }
     else sender.selectedSegmentIndex = 0;
 }
+
 @end
