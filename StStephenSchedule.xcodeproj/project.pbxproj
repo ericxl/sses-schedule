@@ -20,6 +20,7 @@
 		07F76DB31A1AF69600398DB2 /* sstxClasses_middle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07F76DB11A1AF69600398DB2 /* sstxClasses_middle.plist */; };
 		C9174CC622519F6C002562F9 /* SSSClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C9174CC522519F6C002562F9 /* SSSClass.m */; };
 		C9174CC92251A1D4002562F9 /* SSSSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = C9174CC82251A1D4002562F9 /* SSSSchedule.m */; };
+		C974B5E722533F1E005F8864 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C974B5E622533F1E005F8864 /* MainPageViewController.m */; };
 		C9DDD16B224C305200EE0416 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D438541594BEFD0022BC05 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,8 @@
 		C9174CC522519F6C002562F9 /* SSSClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSSClass.m; sourceTree = "<group>"; };
 		C9174CC72251A1D4002562F9 /* SSSSchedule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSSSchedule.h; sourceTree = "<group>"; };
 		C9174CC82251A1D4002562F9 /* SSSSchedule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSSSchedule.m; sourceTree = "<group>"; };
+		C974B5E522533F1E005F8864 /* MainPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
+		C974B5E622533F1E005F8864 /* MainPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 			children = (
 				07D438631594BEFD0022BC05 /* AppDelegate.h */,
 				07D438641594BEFD0022BC05 /* AppDelegate.m */,
+				C974B5E522533F1E005F8864 /* MainPageViewController.h */,
+				C974B5E622533F1E005F8864 /* MainPageViewController.m */,
 				071E4CAF15BD6906008A9457 /* MainController.h */,
 				071E4CB015BD6906008A9457 /* MainController.m */,
 				07D438751594BF490022BC05 /* ClassPickerController.h */,
@@ -217,6 +222,7 @@
 				07D438771594BF490022BC05 /* ClassPickerController.m in Sources */,
 				C9174CC92251A1D4002562F9 /* SSSSchedule.m in Sources */,
 				C9174CC622519F6C002562F9 /* SSSClass.m in Sources */,
+				C974B5E722533F1E005F8864 /* MainPageViewController.m in Sources */,
 				071E4CB115BD6906008A9457 /* MainController.m in Sources */,
 				07EE629016586E43002E5A73 /* SettingView.m in Sources */,
 				07EE6293165877E9002E5A73 /* UsersViewController.m in Sources */,

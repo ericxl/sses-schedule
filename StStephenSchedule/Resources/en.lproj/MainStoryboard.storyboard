@@ -120,13 +120,13 @@ All rights reserved.</string>
         <!--Main Controller-->
         <scene sceneID="RJs-5F-LsS">
             <objects>
-                <viewController id="na9-4l-dKT" customClass="MainController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainView" id="na9-4l-dKT" customClass="MainController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qO7-yd-hEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OHf-Fh-GpC">
-                                <rect key="frame" x="0.0" y="44" width="375" height="646"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="-2" indentationWidth="10" reuseIdentifier="ScheduleCellIdentifier" rowHeight="80" id="rye-mC-k8Q">
@@ -204,122 +204,13 @@ All rights reserved.</string>
                                     <outlet property="delegate" destination="na9-4l-dKT" id="bpA-tV-4DF"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dvb-7h-MdR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.55294117647058827" green="0.16862745098039217" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="pbj-4J-Akv"/>
-                                    <barButtonItem width="34" style="plain" id="OK0-b9-i6A">
-                                        <button key="customView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xTU-Mn-UDh">
-                                            <rect key="frame" x="32.666666666666664" y="7" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="A">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="dayButtonPressed:" destination="na9-4l-dKT" eventType="touchUpInside" id="Aur-Lc-yFU"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BlJ-M8-XjM"/>
-                                    <barButtonItem width="34" style="plain" id="qEg-MV-gbs">
-                                        <button key="customView" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="45m-Lj-eXk">
-                                            <rect key="frame" x="79.333333333333329" y="7" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="B">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="dayButtonPressed:" destination="na9-4l-dKT" eventType="touchUpInside" id="ooP-GV-0OP"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cDF-eo-R6d"/>
-                                    <barButtonItem width="34" style="plain" id="Wvl-cn-aA1">
-                                        <button key="customView" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="G7m-7Z-DC8">
-                                            <rect key="frame" x="126" y="7" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="C">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="dayButtonPressed:" destination="na9-4l-dKT" eventType="touchUpInside" id="PFl-th-lq8"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="nji-eK-wVX"/>
-                                    <barButtonItem width="34" style="plain" id="lOC-Za-zJj">
-                                        <button key="customView" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jNF-Y5-5Oy">
-                                            <rect key="frame" x="172.66666666666666" y="7" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="D">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="dayButtonPressed:" destination="na9-4l-dKT" eventType="touchUpInside" id="Wwp-zQ-4nI"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="YwU-Yc-vtw"/>
-                                    <barButtonItem width="34" style="plain" id="065-23-cZG">
-                                        <button key="customView" opaque="NO" clearsContextBeforeDrawing="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ROv-0J-KE4">
-                                            <rect key="frame" x="219" y="7" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="E">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="dayButtonPressed:" destination="na9-4l-dKT" eventType="touchUpInside" id="lpE-a7-atT"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="a0E-Ms-CiV"/>
-                                    <barButtonItem width="34" style="plain" id="WYt-xN-SjR">
-                                        <button key="customView" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sAc-7B-WFZ">
-                                            <rect key="frame" x="265.66666666666669" y="7" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="F">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="dayButtonPressed:" destination="na9-4l-dKT" eventType="touchUpInside" id="HoE-qH-PL8"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1Pi-HU-Hvy"/>
-                                    <barButtonItem width="34" style="plain" id="sUs-09-1d7">
-                                        <button key="customView" opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ox9-ru-jtg">
-                                            <rect key="frame" x="312.33333333333331" y="7" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="G">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="dayButtonPressed:" destination="na9-4l-dKT" eventType="touchUpInside" id="cea-pb-LNC"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dTH-cI-Pm5"/>
-                                </items>
-                                <color key="barTintColor" red="0.52549019607843139" green="0.16470588235294117" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="OHf-Fh-GpC" firstAttribute="top" secondItem="M5T-I9-yfh" secondAttribute="top" id="3XV-4J-2tO"/>
                             <constraint firstItem="OHf-Fh-GpC" firstAttribute="bottom" secondItem="M5T-I9-yfh" secondAttribute="bottom" id="AAW-bf-ZYK"/>
                             <constraint firstItem="OHf-Fh-GpC" firstAttribute="trailing" secondItem="M5T-I9-yfh" secondAttribute="trailing" id="HIN-lC-6QW"/>
-                            <constraint firstItem="Dvb-7h-MdR" firstAttribute="trailing" secondItem="M5T-I9-yfh" secondAttribute="trailing" id="V0K-5W-S6T"/>
-                            <constraint firstItem="OHf-Fh-GpC" firstAttribute="top" secondItem="Dvb-7h-MdR" secondAttribute="bottom" id="YRs-0G-lzh"/>
                             <constraint firstItem="OHf-Fh-GpC" firstAttribute="leading" secondItem="M5T-I9-yfh" secondAttribute="leading" id="bEC-g7-3aX"/>
-                            <constraint firstItem="Dvb-7h-MdR" firstAttribute="leading" secondItem="M5T-I9-yfh" secondAttribute="leading" id="eNQ-Pe-Te5"/>
-                            <constraint firstItem="Dvb-7h-MdR" firstAttribute="top" secondItem="M5T-I9-yfh" secondAttribute="top" id="kYH-tv-KnN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M5T-I9-yfh"/>
                     </view>
@@ -333,19 +224,21 @@ All rights reserved.</string>
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="OHf-Fh-GpC" id="kew-6I-RzG"/>
-                        <outlet property="toolbar" destination="Dvb-7h-MdR" id="gxN-Zp-LVI"/>
-                        <outletCollection property="letterButtons" destination="xTU-Mn-UDh" id="PmF-YY-8PH"/>
-                        <outletCollection property="letterButtons" destination="45m-Lj-eXk" id="cA3-WQ-ifR"/>
-                        <outletCollection property="letterButtons" destination="G7m-7Z-DC8" id="A1O-M8-LUh"/>
-                        <outletCollection property="letterButtons" destination="jNF-Y5-5Oy" id="qx0-YD-zED"/>
-                        <outletCollection property="letterButtons" destination="ROv-0J-KE4" id="Ebs-yJ-I5B"/>
-                        <outletCollection property="letterButtons" destination="sAc-7B-WFZ" id="iOD-T3-9i3"/>
-                        <outletCollection property="letterButtons" destination="Ox9-ru-jtg" id="tl3-Fx-x3V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCI-ZB-iYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="384.80000000000001" y="82.758620689655174"/>
+        </scene>
+        <!--Main Page Controller-->
+        <scene sceneID="x8Y-sL-G0k">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" title="hllo" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="FiS-tG-XhY" userLabel="Main Page Controller" customClass="MainPageViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Tss-BD-9fc"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9sU-Gx-qzv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1494" y="764"/>
         </scene>
         <!--Setting View-->
         <scene sceneID="wOv-fD-ggg">
@@ -496,12 +389,12 @@ All rights reserved.</string>
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="na9-4l-dKT" kind="relationship" relationship="rootViewController" id="SLA-WJ-stu"/>
+                        <segue destination="FiS-tG-XhY" kind="relationship" relationship="rootViewController" id="GJC-mK-wBI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDA-Dr-ccs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-532" y="84"/>
+            <point key="canvasLocation" x="681" y="742"/>
         </scene>
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

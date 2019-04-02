@@ -14,6 +14,10 @@
 {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{kDisplayingUserNameKey: kDefaultUserName}];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor darkGrayColor];
+    
     return YES;
 }
 

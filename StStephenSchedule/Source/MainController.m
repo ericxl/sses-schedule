@@ -14,10 +14,6 @@
 
 @interface MainController ()
 
-@property (strong, nonatomic) SSSSchedule *displayingSchedule;
-@property (strong, nonatomic) SSSSchedule *editingSchedule;
-@property (strong, nonatomic) NSString *displayingDay;
-
 @end
 
 @implementation MainController
@@ -25,33 +21,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.displayingSchedule = [self loadSchedule];
-    self.editingSchedule = [self loadSchedule];
-    
-    self.displayingDay = @"A";
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        NSString *dayString = [self getLetterDayFromApache];
-        if (dayString != nil)
-        {
-            self.displayingDay = dayString;
-            __weak MainController *welf = self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                for (id object in self.letterButtons) {
-                    UIButton * button = (UIButton *)object;
-                    if ([button.titleLabel.text isEqualToString:dayString]){
-                        button.titleLabel.textColor = [UIColor yellowColor];
-                        [button setTitleColor: [UIColor yellowColor] forState:UIControlStateNormal];
-                    }
-                    [[welf myTableView] reloadData];
-                }
-                [welf setTitle:[NSString stringWithFormat:@"%@ day", self.displayingDay]];
-            });
-        }
-    });
-    
+
     self.title = [NSString stringWithFormat:@"%@ day", self.displayingDay];
-    [self updateNavBar:NO];
+
     self.myTableView.allowsSelectionDuringEditing = YES;
     self.myTableView.allowsSelection = NO;
 }
@@ -91,7 +63,7 @@
     static NSString *CellIdentifier = @"ScheduleCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    SSSSchedule *displayedSchedule = tableView.isEditing ? self.editingSchedule : self.displayingSchedule;
+    SSSSchedule *displayedSchedule = tableView.isEditing ? self.editingSchedule : self.schedule;
     NSLog(@"isEditing%@", [tableView isEditing] ? @"YES":  @"NO");
     NSString *selectedClassPeriod = [self classPeriodFromIndexPath:indexPath];
     SSSClass *currentClass = [displayedSchedule getClassWithClassPeriod:selectedClassPeriod];
@@ -121,8 +93,8 @@
     
     self.editedIndexPath = indexPath;
     NSString *selectedClassPeriod = [self classPeriodFromIndexPath:indexPath];
-    [destination setEditingClass:[self.displayingSchedule getClassWithClassPeriod:selectedClassPeriod]];
-    [destination setEditingSchedule:self.displayingSchedule];
+    [destination setEditingClass:[self.schedule getClassWithClassPeriod:selectedClassPeriod]];
+    [destination setEditingSchedule:self.schedule];
     [destination setEditingPeriod:selectedClassPeriod];
     [destination setDelegate:self];
 
@@ -132,97 +104,10 @@
 
 #pragma mark - Helpers
 
-- (NSString *)userFilePath
-{
-    NSString *currentUser = [[NSUserDefaults standardUserDefaults]objectForKey:kDisplayingUserNameKey];
-    return [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_schedule", currentUser]];
-}
-
-- (SSSSchedule *)loadSchedule
-{
-    NSString *usersFilePath = [self userFilePath];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:usersFilePath]) {
-        NSData *scheduleData = [NSData dataWithContentsOfFile:usersFilePath];
-        return [NSKeyedUnarchiver unarchiveObjectWithData:scheduleData];
-    }
-    else
-    {
-        SSSSchedule *newSchedule = [[SSSSchedule alloc] initWithHighSchool:YES];
-        [self saveSchedule:newSchedule];
-        return newSchedule;
-    }
-}
-
-- (void)saveSchedule:(SSSSchedule *)schedule
-{
-    [NSKeyedArchiver archiveRootObject:schedule toFile:[self userFilePath]];
-}
-
 - (NSString *)classPeriodFromIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger period = [indexPath row] + 1;
     return [NSString stringWithFormat:@"%@%ld", self.displayingDay, period];
-}
-
--(NSString * )getLetterDayFromApache {
-    NSURL *url = [NSURL URLWithString:LETTER_DAY_URL];
-    NSError *error = nil;
-    NSData *fetchedString = [NSData dataWithContentsOfURL:url options:0 error:&error];
-    NSString *content = nil;
-    NSString *result = nil;
-    if(!error && fetchedString && [fetchedString length] > 0) {
-        content = [[NSString alloc]initWithData:fetchedString encoding:NSASCIIStringEncoding];
-        char dayLetterChar=[content characterAtIndex:[content length]-4];
-        NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@"ABCDEFG"];
-        if ([characterSet characterIsMember:dayLetterChar]) {
-            result = [NSString stringWithFormat:@"%c",dayLetterChar];
-        }
-    }
-    return result;
-}
-
--(IBAction)dayButtonPressed:(UIButton *)sender {
-    self.displayingDay = [NSString stringWithFormat:@"%C", [@"_ABCDEFG" characterAtIndex:sender.tag]];
-    self.title = [NSString stringWithFormat:@"%@ day", self.displayingDay];
-    [self.myTableView reloadData];
-}
-
-- (void)updateNavBar:(BOOL)editing
-{
-    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: editing ? UIBarButtonSystemItemCancel : UIBarButtonSystemItemAdd target:self action: editing ? @selector(handleCancel) : @selector(handleSettings)];
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:editing ? UIBarButtonSystemItemOrganize : UIBarButtonSystemItemCompose target:self action: editing ? @selector(handleSave) : @selector(handleEdit)];
-    [left setTintColor:[UIColor whiteColor]];
-    [right setTintColor:[UIColor whiteColor]];
-
-    self.navigationItem.leftBarButtonItem = left;
-    self.navigationItem.rightBarButtonItem = right;
-}
-
-- (void)handleEdit{
-    [self.myTableView setEditing:YES animated:YES];
-    [self.myTableView reloadData];
-    [self updateNavBar:YES];
-}
-
-- (void)handleSettings {
-    SettingView *settingView = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
-    [self.navigationController pushViewController:settingView animated:YES];
-}
-
-- (void)handleCancel{
-    [self updateNavBar:NO];
-    self.editingSchedule = [self loadSchedule];
-    [self.myTableView setEditing:NO animated:YES];
-    [self.myTableView reloadData];
-}
-
-- (void)handleSave {
-    [self updateNavBar:NO];
-    [self saveSchedule:self.editingSchedule];
-    self.displayingSchedule = [self loadSchedule];
-    self.editingSchedule = [self loadSchedule];
-    [self.myTableView setEditing:NO animated:YES];
-    [self.myTableView reloadData];
 }
 
 @end

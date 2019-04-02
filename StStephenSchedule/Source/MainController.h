@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class SSSClass;
+@class SSSSchedule;
 
 @interface MainController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate, UINavigationControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *letterButtons;
 
--(IBAction)dayButtonPressed:(UIButton *)sender;
+@property (strong, nonatomic) NSString *displayingDay;
+@property (strong, nonatomic) SSSSchedule *schedule;
+@property (strong, nonatomic) SSSSchedule *editingSchedule;
 
 @property (strong, nonatomic) SSSClass *editingClass;
 @property (assign, nonatomic) BOOL editingIsAll;
