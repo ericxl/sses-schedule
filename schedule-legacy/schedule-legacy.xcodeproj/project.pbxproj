@@ -29,7 +29,7 @@
 		071E4CB015BD6906008A9457 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		075C2D641A98F4BC0053A62C /* sstxClasses_upper.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sstxClasses_upper.plist; sourceTree = "<group>"; };
 		07A6D5761FAE589B006F36FB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		07D438501594BEFD0022BC05 /* StStephenSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StStephenSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		07D438501594BEFD0022BC05 /* schedule-legacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "schedule-legacy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D438541594BEFD0022BC05 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		07D4385C1594BEFD0022BC05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07D438601594BEFD0022BC05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		07D438511594BEFD0022BC05 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				07D438501594BEFD0022BC05 /* StStephenSchedule.app */,
+				07D438501594BEFD0022BC05 /* schedule-legacy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		07D4384F1594BEFD0022BC05 /* StStephenSchedule */ = {
+		07D4384F1594BEFD0022BC05 /* schedule-legacy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07D4386E1594BEFD0022BC05 /* Build configuration list for PBXNativeTarget "StStephenSchedule" */;
+			buildConfigurationList = 07D4386E1594BEFD0022BC05 /* Build configuration list for PBXNativeTarget "schedule-legacy" */;
 			buildPhases = (
 				07D4384C1594BEFD0022BC05 /* Sources */,
 				07D4384D1594BEFD0022BC05 /* Frameworks */,
@@ -160,9 +160,9 @@
 			);
 			dependencies = (
 			);
-			name = StStephenSchedule;
+			name = "schedule-legacy";
 			productName = StStephenSchedule;
-			productReference = 07D438501594BEFD0022BC05 /* StStephenSchedule.app */;
+			productReference = 07D438501594BEFD0022BC05 /* schedule-legacy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -180,7 +180,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 07D4384A1594BEFD0022BC05 /* Build configuration list for PBXProject "StStephenSchedule" */;
+			buildConfigurationList = 07D4384A1594BEFD0022BC05 /* Build configuration list for PBXProject "schedule-legacy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -193,7 +193,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				07D4384F1594BEFD0022BC05 /* StStephenSchedule */,
+				07D4384F1594BEFD0022BC05 /* schedule-legacy */,
 			);
 		};
 /* End PBXProject section */
@@ -337,7 +337,7 @@
 				DEVELOPMENT_TEAM = 2NA87MVYM6;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Supporting Files/StStephenSchedule-Prefix.pch";
+				GCC_PREFIX_HEADER = "Supporting Files/schedule-legacy-Prefix.pch";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.sstx;
@@ -356,7 +356,7 @@
 				DEVELOPMENT_TEAM = 2NA87MVYM6;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Supporting Files/StStephenSchedule-Prefix.pch";
+				GCC_PREFIX_HEADER = "Supporting Files/schedule-legacy-Prefix.pch";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = NO;
@@ -370,7 +370,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07D4384A1594BEFD0022BC05 /* Build configuration list for PBXProject "StStephenSchedule" */ = {
+		07D4384A1594BEFD0022BC05 /* Build configuration list for PBXProject "schedule-legacy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07D4386C1594BEFD0022BC05 /* Debug */,
@@ -379,7 +379,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07D4386E1594BEFD0022BC05 /* Build configuration list for PBXNativeTarget "StStephenSchedule" */ = {
+		07D4386E1594BEFD0022BC05 /* Build configuration list for PBXNativeTarget "schedule-legacy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07D4386F1594BEFD0022BC05 /* Debug */,

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:schedule-legacy/StStephenSchedule.xcodeproj">
+      location = "group:schedule-legacy/schedule-legacy.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:schedule/sses-schedule.xcodeproj">
    </FileRef>
 </Workspace>

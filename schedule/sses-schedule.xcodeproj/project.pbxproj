@@ -62,7 +62,7 @@
 				C963453E22548A6F007F990E /* Resources */,
 				C963453F22548A8E007F990E /* Supporting Files */,
 			);
-			path = "sses-schedule";
+			name = "sses-schedule";
 			sourceTree = "<group>";
 		};
 		C963453D22548A5C007F990E /* Source */ = {
@@ -316,13 +316,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2NA87MVYM6;
-				INFOPLIST_FILE = "sses-schedule/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sstx.sses-schedule";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sstx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -335,13 +335,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2NA87MVYM6;
-				INFOPLIST_FILE = "sses-schedule/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sstx.sses-schedule";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sstx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
