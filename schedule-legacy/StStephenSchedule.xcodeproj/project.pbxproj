@@ -133,7 +133,7 @@
 				076696F422489EC10070D6B1 /* Resources */,
 				07D4385B1594BEFD0022BC05 /* Supporting Files */,
 			);
-			path = StStephenSchedule;
+			name = StStephenSchedule;
 			sourceTree = "<group>";
 		};
 		07D4385B1594BEFD0022BC05 /* Supporting Files */ = {
@@ -142,7 +142,7 @@
 				07D4385C1594BEFD0022BC05 /* Info.plist */,
 				07D438621594BEFD0022BC05 /* StStephenSchedule-Prefix.pch */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +185,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 07D438451594BEFD0022BC05;
@@ -336,8 +337,8 @@
 				DEVELOPMENT_TEAM = 2NA87MVYM6;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "StStephenSchedule/StStephenSchedule-Prefix.pch";
-				INFOPLIST_FILE = StStephenSchedule/Info.plist;
+				GCC_PREFIX_HEADER = "Supporting Files/StStephenSchedule-Prefix.pch";
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.sstx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,8 +356,8 @@
 				DEVELOPMENT_TEAM = 2NA87MVYM6;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "StStephenSchedule/StStephenSchedule-Prefix.pch";
-				INFOPLIST_FILE = StStephenSchedule/Info.plist;
+				GCC_PREFIX_HEADER = "Supporting Files/StStephenSchedule-Prefix.pch";
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = org.sstx;
