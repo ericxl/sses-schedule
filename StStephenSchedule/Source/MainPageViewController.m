@@ -17,6 +17,9 @@
 @property (strong, nonatomic) SSSSchedule *editingSchedule;
 @property (strong, nonatomic) NSString *displayingDay;
 
+@property (strong, nonatomic) MainController *currentPresentingController;
+@property (assign, nonatomic) BOOL canSetEditable;
+
 @property (nonatomic, strong) NSArray *controllers;
 
 @end
@@ -96,6 +99,17 @@
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
     return [self.controllers indexOfObject: self.viewControllers.firstObject];
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    NSLog(@"XL: %@", self.viewControllers.firstObject.title);
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+{
+    NSLog(@"willTransitionToViewControllers");
+
 }
 //- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
 //    <#code#>

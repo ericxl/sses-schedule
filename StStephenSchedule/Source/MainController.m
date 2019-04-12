@@ -73,9 +73,9 @@
     UILabel *teacherNameLabel=(UILabel *)[cell viewWithTag:3];
     UILabel *locationNameLabel=(UILabel *)[cell viewWithTag:4];
     periodLabel.text = [NSString stringWithFormat:@"%ld", ([indexPath row] + 1)];
-    classNameLabel.text = currentClass.name;
-    teacherNameLabel.text = currentClass.teacher;
-    locationNameLabel.text = currentClass.location;
+    classNameLabel.text = @"Beginning Dance";
+    teacherNameLabel.text = @"Dr. Dean";
+    locationNameLabel.text = @"Browser";
 
     return cell;
 }
