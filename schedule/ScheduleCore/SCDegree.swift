@@ -6,7 +6,7 @@
 //  Copyright © 2019 Eric Liang. All rights reserved.
 //
 
-public enum SCDegree : Int, Codable{
+public enum SCDegree : Int, Codable {
     case high
     case middle
 }

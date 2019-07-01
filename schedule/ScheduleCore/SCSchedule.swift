@@ -6,7 +6,7 @@
 //  Copyright © 2019 Eric Liang. All rights reserved.
 //
 
-public struct SCSchedule : Codable {
+public struct SCSchedule : Codable, Equatable {
     public var username = ""
     public var degree = SCDegree.high
     var _data : [SCDayPeriod : SCClass?] = {

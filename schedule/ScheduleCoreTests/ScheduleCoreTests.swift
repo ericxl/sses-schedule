@@ -95,4 +95,15 @@ class ScheduleCoreTests: XCTestCase {
         XCTAssertEqual(scheduleMiddle[.F4], c2)
         XCTAssertEqual(scheduleMiddle[.G4], c2)
     }
+
+    func testDecode() {
+        var data = SCUserData()
+        var s1 = SCSchedule()
+        s1.put(class: SCClass(name: "English"), dayPeriod: .G1)
+        s1.put(class: SCClass(name: "History"), dayPeriod: .G2)
+        s1.put(class: SCClass(name: "Math"), dayPeriod: .G3)
+        s1.put(class: SCClass(name: "Music"), dayPeriod: .G4)
+        data.add(user: "erix", schedule: s1)
+        XCTAssertEqual(try? JSONDecoder().decode(SCUserData.self, from: JSONEncoder().encode(data)), data)
+    }
 }

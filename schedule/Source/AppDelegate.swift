@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import ScheduleCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
+    var window : UIWindow?
+    var data : SCUserData!
+    var schedule : SCSchedule! {
+        data.currentSchedule
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.register(defaults: ["kDisplayingUserNameKey" : "DEFAULT_USER"]);
@@ -20,7 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pageControl = UIPageControl.appearance();
         pageControl.pageIndicatorTintColor = UIColor.lightGray;
         pageControl.currentPageIndicatorTintColor = UIColor.darkGray;
-        // Override point for customization after application launch.
+
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = dir.appendingPathComponent("data")
+            do {
+                data = try JSONDecoder().decode(SCUserData.self, from: Data(contentsOf: fileURL))
+            }
+            catch {
+                data = SCUserData()
+                if let encoded = try? JSONEncoder().encode(data) {
+                    try? encoded.write(to: fileURL)
+                }
+            }
+        }
+
         return true
     }
 

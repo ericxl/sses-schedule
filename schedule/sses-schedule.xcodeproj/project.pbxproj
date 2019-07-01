@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		0758393822C96F51009CD055 /* SCSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758393722C96F51009CD055 /* SCSchedule.swift */; };
 		0758393A22C9701C009CD055 /* SCDegree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758393922C9701C009CD055 /* SCDegree.swift */; };
-		0758393E22C974CC009CD055 /* TestPlan.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 0758393D22C974CC009CD055 /* TestPlan.xctestplan */; };
 		0758394022C97AAD009CD055 /* SCDayPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758393F22C97AAD009CD055 /* SCDayPeriod.swift */; };
 		0758394222C99186009CD055 /* SCDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758394122C99186009CD055 /* SCDay.swift */; };
 		0758394422C992F4009CD055 /* SCPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758394322C992F4009CD055 /* SCPeriod.swift */; };
+		07E3BC7222C9D00F006D4BE4 /* SCUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3BC7122C9D00F006D4BE4 /* SCUserData.swift */; };
 		07F8B75522C963B600628A18 /* ScheduleCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F8B74C22C963B600628A18 /* ScheduleCore.framework */; };
 		07F8B75C22C963B600628A18 /* ScheduleCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F8B75B22C963B600628A18 /* ScheduleCoreTests.swift */; };
 		07F8B75E22C963B600628A18 /* ScheduleCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 07F8B74E22C963B600628A18 /* ScheduleCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -61,10 +61,10 @@
 /* Begin PBXFileReference section */
 		0758393722C96F51009CD055 /* SCSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCSchedule.swift; sourceTree = "<group>"; };
 		0758393922C9701C009CD055 /* SCDegree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDegree.swift; sourceTree = "<group>"; };
-		0758393D22C974CC009CD055 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = TestPlan.xctestplan; path = ../TestPlan.xctestplan; sourceTree = "<group>"; };
 		0758393F22C97AAD009CD055 /* SCDayPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDayPeriod.swift; sourceTree = "<group>"; };
 		0758394122C99186009CD055 /* SCDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCDay.swift; sourceTree = "<group>"; };
 		0758394322C992F4009CD055 /* SCPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCPeriod.swift; sourceTree = "<group>"; };
+		07E3BC7122C9D00F006D4BE4 /* SCUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCUserData.swift; sourceTree = "<group>"; };
 		07F8B74C22C963B600628A18 /* ScheduleCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScheduleCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F8B74E22C963B600628A18 /* ScheduleCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleCore.h; sourceTree = "<group>"; };
 		07F8B74F22C963B600628A18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,6 +120,7 @@
 				0758393922C9701C009CD055 /* SCDegree.swift */,
 				0758394322C992F4009CD055 /* SCPeriod.swift */,
 				0758393722C96F51009CD055 /* SCSchedule.swift */,
+				07E3BC7122C9D00F006D4BE4 /* SCUserData.swift */,
 			);
 			path = ScheduleCore;
 			sourceTree = "<group>";
@@ -136,7 +137,6 @@
 		C96345192254729F007F990E = {
 			isa = PBXGroup;
 			children = (
-				0758393D22C974CC009CD055 /* TestPlan.xctestplan */,
 				C96345242254729F007F990E /* sses-schedule */,
 				07F8B74D22C963B600628A18 /* ScheduleCore */,
 				07F8B75A22C963B600628A18 /* ScheduleCoreTests */,
@@ -309,7 +309,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0758393E22C974CC009CD055 /* TestPlan.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +341,7 @@
 				0758394422C992F4009CD055 /* SCPeriod.swift in Sources */,
 				0758393A22C9701C009CD055 /* SCDegree.swift in Sources */,
 				0758394222C99186009CD055 /* SCDay.swift in Sources */,
+				07E3BC7222C9D00F006D4BE4 /* SCUserData.swift in Sources */,
 				0758394022C97AAD009CD055 /* SCDayPeriod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,7 +412,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ScheduleCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,7 +443,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ScheduleCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -553,7 +553,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -608,7 +608,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -626,7 +626,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2NA87MVYM6;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -647,7 +647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2NA87MVYM6;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
