@@ -1,0 +1,17 @@
+{
+  "defaultOptions" : {
+
+  },
+  "configurations" : [
+    {
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}

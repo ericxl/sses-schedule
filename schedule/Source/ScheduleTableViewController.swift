@@ -7,11 +7,12 @@
 //
 
 import UIKit
-
+import ScheduleCore
 class ScheduleTableViewController: UIViewController {
 
-    var schedule = SSSchedule()
-    
+    var schedule : SCSchedule!
+    var displayingDayPeriod : SCDay!
+
     @IBOutlet weak var scheduleTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +65,12 @@ extension ScheduleTableViewController : UITableViewDataSource
         let classNameLabel = cell.viewWithTag(2) as! UILabel
         let teacherNameLabel = cell.viewWithTag(3) as! UILabel
         let locationLabel = cell.viewWithTag(4) as! UILabel
-        
-        let currentClass = self.schedule[self.title! + String(indexPath.row + 1)]!
+        let currentClass = schedule[SCDayPeriod(day: displayingDayPeriod, period: SCPeriod(rawValue: indexPath.row + 1)!)]
 
         periodLabel.text = String(indexPath.row + 1)
-        classNameLabel.text = currentClass.name
-        teacherNameLabel.text = currentClass.teacher
-        locationLabel.text = currentClass.location
-        
+        classNameLabel.text = currentClass?.name
+        teacherNameLabel.text = currentClass?.teacher
+        locationLabel.text = currentClass?.location
         return cell
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ScheduleCore
 
 class MainViewController: UIPageViewController {
 
@@ -16,12 +17,12 @@ class MainViewController: UIPageViewController {
         dataSource = self
         delegate = self
         
-        view.backgroundColor = UIColor.white
+//        var sc = SCSchedule()
         
         let left : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(handleEdit))
         let right : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(handleCancel))
-        left.tintColor = UIColor.white
-        right.tintColor = UIColor.white
+//        left.tintColor = UIColor.label
+//        right.tintColor = UIColor.label
         self.navigationItem.leftBarButtonItem = left
         self.navigationItem.rightBarButtonItem = right
         
@@ -31,19 +32,17 @@ class MainViewController: UIPageViewController {
                                animated: true,
                                completion: nil)
         }
-        
-        let schedule = SSSchedule()
-        schedule["A3"] = SSClass("Dancing", teacher: "Dr. Shit")
-        schedule["A", 6] = SSClass("English 10", teacher: "Hewllet", location: "Random place")
-        
+
+        var schedule = SCSchedule()
+        schedule.put(class: SCClass(name: "English"), dayPeriod: .A4)
+        schedule.put(class: SCClass(name: "History"), dayPeriod: .A1, all: true)
         for controler in orderedViewControllers {
             controler.schedule = schedule
+            controler.displayingDayPeriod = SCDay(rawValue: controler.title!)
         }
-        // Do any additional setup after loading the view.
     }
     
     private(set) lazy var orderedViewControllers: [ScheduleTableViewController] = {
-        print("asking orderedViewControllers")
         return [self.mainTableViewController("A"),
                 self.mainTableViewController("B"),
                 self.mainTableViewController("C"),
@@ -58,15 +57,6 @@ class MainViewController: UIPageViewController {
         tableController.title = letterDay
         return tableController
     }
-    /*
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: - Navigation
 
     @objc func handleCancel()
